@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>代码审计小提示 |  小玉玉的博客</title>
+      <title>俄乌网络战中的思考 |  小玉玉的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -43,7 +43,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-代码审计小提示"
+  id="post-俄乌网络战中的思考"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  代码审计小提示
+  俄乌网络战中的思考
 </h1>
  
 
@@ -62,15 +62,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/05/06/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/" class="article-date">
-  <time datetime="2021-05-06T12:39:33.000Z" itemprop="datePublished">2021-05-06</time>
+      <a href="/2022/03/07/%E4%BF%84%E4%B9%8C%E7%BD%91%E7%BB%9C%E6%88%98%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" class="article-date">
+  <time datetime="2022-03-07T15:46:24.000Z" itemprop="datePublished">2022-03-07</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">434</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -94,35 +94,15 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="代码审计简单的小提示"><a href="#代码审计简单的小提示" class="headerlink" title="代码审计简单的小提示"></a>代码审计简单的小提示</h1><hr>
-<h2 id="1-代码审计需要的东西"><a href="#1-代码审计需要的东西" class="headerlink" title="1.代码审计需要的东西"></a>1.代码审计需要的东西</h2><h3 id="1-1-软件："><a href="#1-1-软件：" class="headerlink" title="1.1 软件："></a>1.1 软件：</h3><p>1.1.1 文本编辑器：</p>
-<p>notepad++、sublime、PHP storm</p>
-<p>1.1.2 代码运行环境：</p>
-<p>phpstudy</p>
-<p>1.1.3 辅助审计工具：</p>
-<p>kunlunM，seay</p>
-<h3 id="1-2-知识："><a href="#1-2-知识：" class="headerlink" title="1.2 知识："></a>1.2 知识：</h3><p>1.2.1 前端语言知识：</p>
-<p>html、css、js</p>
-<p>1.2.2 脚本语言知识：</p>
-<p>php、asp、jsp</p>
-<p>1.2.3 后端语言知识：</p>
-<p>python-&gt;django、flask</p>
-<p>java-&gt;vue、spring</p>
-<p>1.2.4 数据库知识：</p>
-<p>数据库语句、数据库结构、数据库使用</p>
-<p>1.2.5 网站结构知识：</p>
-<p>mvc等（如cms的基本结构）</p>
-<h2 id="2-代码审计的基本流程"><a href="#2-代码审计的基本流程" class="headerlink" title="2.代码审计的基本流程"></a>2.代码审计的基本流程</h2><p>2.1 了解目标的基本组织结构，也就是通读文件夹，知道哪些文件夹里面大概是哪些内容并且具体负责什么功能</p>
-<p>2.2 寻找主要的入口页面（如index、admin等）找到前端页面逻辑触发的入口</p>
-<p>2.3 遍历所有的功能函数并且了解基本的传参过程和内部处理逻辑</p>
-<p>2.4 搭建运行环境并且收集所有用户可以控制的变量和参数</p>
-<p>2.5 将收集到的变量和参数对照源代码带入并检查过滤机制</p>
-<h2 id="3-常见的漏洞点和源代码的关系"><a href="#3-常见的漏洞点和源代码的关系" class="headerlink" title="3.常见的漏洞点和源代码的关系"></a>3.常见的漏洞点和源代码的关系</h2><h3 id="3-1-寻找技巧："><a href="#3-1-寻找技巧：" class="headerlink" title="3.1 寻找技巧："></a>3.1 寻找技巧：</h3><p>搜索引擎 “脚本语言+危险函数“</p>
-<h3 id="3-2-基本的漏洞机制："><a href="#3-2-基本的漏洞机制：" class="headerlink" title="3.2 基本的漏洞机制："></a>3.2 基本的漏洞机制：</h3><p>注入-&gt;用户输入不受控制并且能拼接上开发者原本代码</p>
-<p>文件上传等-&gt;黑白名单不完善或者缺失</p>
-<p>反序列化-&gt;类的关联和敏感函数</p>
-<p>逻辑漏洞等-&gt;参数类型没有问题但是影响业务风险</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>耐心、细心</p>
+  <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在俄罗斯和乌克兰局势经过白热化的“具体战斗”之后，从这次的区域战争中思考网络战中的变化与新出现的趋势，并从中思考我们作为网络安全的从业者应该如何提高自己能力和反思网络安全建设。</p>
+<h1 id="特点与变化"><a href="#特点与变化" class="headerlink" title="特点与变化"></a>特点与变化</h1><h2 id="1-特点"><a href="#1-特点" class="headerlink" title="1.特点"></a>1.特点</h2><h3 id="1-1-协议层的dos攻击"><a href="#1-1-协议层的dos攻击" class="headerlink" title="1.1 协议层的dos攻击"></a>1.1 协议层的dos攻击</h3><p>在这次的网络战中我们可以观察到，利用放大类型的dos攻击比如ntp放大其实占比是比较小的，这在我们传统理解dos攻击效率上是有不同的，当然，其中也有很多情况可能是环境的局限性造成的，在检测到最多的类型的反而是https，这也是防御过程中流量清洗最难的一种。不过由于攻击逻辑比较简单，在目标不存在相关漏洞的时候基本不存在资源差的情况（比如少的流量消耗大的资源），所以这次的网络战中可以看到双方其实对于自己的进攻基础设施是有一定准备的。</p>
+<h3 id="1-2-应用层的dos攻击"><a href="#1-2-应用层的dos攻击" class="headerlink" title="1.2 应用层的dos攻击"></a>1.2 应用层的dos攻击</h3><p>应用层的dos攻击其实就两层，一层是通过漏洞利用或文件删除等方式直接将应用所在的载体进行攻击，一层就是广大apt组织最喜欢利用的勒索软件，也就是加密数据，这在很多的案例中都有表现，我们可以观察到在这次网络战中针对于应用接口较多的或者业务逻辑上就是容易对外产生交互的部门和机构中勒索软件的方式去让目标丧失服务能力是最优先的选择。</p>
+<h2 id="2-变化"><a href="#2-变化" class="headerlink" title="2.变化"></a>2.变化</h2><h3 id="2-1-网络战争与真实战争"><a href="#2-1-网络战争与真实战争" class="headerlink" title="2.1 网络战争与真实战争"></a>2.1 网络战争与真实战争</h3><p>通过网络战中获得的成果（如收集到的信息，瘫痪掉的服务等）来为自己的真实战争提供便利和指向，这一点在之前的区域战争中式很少见的，比如中东地区等，所以这次的区域特点（乌克兰，俄罗斯）都存在大量的网络基础设施，都有大量的网络服务应用，那么在这些目标中如果存在对于自己真实战争有利的东西都可以直接利用。</p>
+<h3 id="2-2-针对经济类的机构部门重点打击"><a href="#2-2-针对经济类的机构部门重点打击" class="headerlink" title="2.2 针对经济类的机构部门重点打击"></a>2.2 针对经济类的机构部门重点打击</h3><p>在关键基础设施中我们通常认为交通、电力、电信设施是首要目标，但在这次的网络战中我们可以看到，针对于证券交易所、银行等经济类机构其实是重点攻击的目标，这也是和战争的类型或者属性有关的，毕竟到现在为止，俄罗斯方面的政治目的是与乌克兰达成战略谈判而并不是彻底占领，乌克兰也没办法反攻俄罗斯。所以瘫痪经济机构运行是双方都想达成的目的。</p>
+<h3 id="2-3-针对平民的钓鱼攻击作为第一接触口"><a href="#2-3-针对平民的钓鱼攻击作为第一接触口" class="headerlink" title="2.3 针对平民的钓鱼攻击作为第一接触口"></a>2.3 针对平民的钓鱼攻击作为第一接触口</h3><p>在这次网络战中捕获到的样本可以发现，word文档，钓鱼链接，app等普通百姓经常使用的网络载体被各方网络攻击者拿来作为了自己攻击的第一跳板。从样本中的社工内容也可以发现，其场景、内容、引导的构造基本都是针对普通百姓的。</p>
+<h3 id="2-4-应用软件的投毒与供应链攻击"><a href="#2-4-应用软件的投毒与供应链攻击" class="headerlink" title="2.4 应用软件的投毒与供应链攻击"></a>2.4 应用软件的投毒与供应链攻击</h3><p>通过软件或者手机app的更新，在更新的内容中投放恶意代码在这次的网络战中有很多的案例，也可以看到不管是企业行为还是个人行为，供应链的攻击已经逐渐成为了一种新的趋势。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>网络安全，尤其是在国际政治下的网络安全，是维护国家主权，保障国家基础设施安全的重要手段。不管是日常的运营还是新东西的构建的时候我们都要思考到万一我们的设施处在一种极端环境比如战争的情况下我们的安全策略或者规则是否存在漏洞或者需要完善的地方。举个简单的例子，很多时候比如hw是不允许拒绝服务攻击的，对于社工攻击的规则也是很严格的，那么如果战争状态下我们的防守目标是否能经得住这些攻击类型的考验这是我们之后需要思考的东西。</p>
+<p>最后说一句：我希望网络安全就好像把菜刀拿来切菜，而不是砍人。网络安全是让我们用来对抗网络犯罪、防范电信诈骗等方面的，而不是用在战争。</p>
  
       <!-- reward -->
       
@@ -175,7 +155,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cutecuteyu.gitee.io/2021/05/06/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cutecuteyu.gitee.io/2022/03/07/%E4%BF%84%E4%B9%8C%E7%BD%91%E7%BB%9C%E6%88%98%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -186,19 +166,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/05/10/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            针对未成年人的网络犯罪思考
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/05/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-Nonverbal%20Communication%20-A%20Valuable%20Tool%20to%20Gain%20Trust/" class="article-nav-link">
+      <a href="/2021/10/18/%E4%BA%BA%E5%9C%A8%E5%8E%8B%E5%8A%9B%E4%B8%8B%E7%9A%84%E9%A9%B1%E5%8A%A8%E5%8F%8D%E9%A6%88%E4%B8%8E%E7%A4%BE%E5%B7%A5%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%99%85%E5%88%A9%E7%94%A8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">转载文章-Nonverbal Communication -A Valuable Tool to Gain Trust</div>
+        <div class="article-nav-title">人在压力下的驱动反馈与社工中的实际利用</div>
       </a>
     
   </nav>
