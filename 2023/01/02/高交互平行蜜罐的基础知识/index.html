@@ -1,244 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>高交互平行蜜罐的基础知识 | 小玉玉的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="高交互平行蜜罐的基础知识">
-<meta property="og:url" content="https://cutecuteyu.github.io/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
-<meta property="og:site_name" content="小玉玉的博客">
-<meta property="og:description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。">
-<meta property="og:locale">
-<meta property="article:published_time" content="2023-01-02T15:46:09.000Z">
-<meta property="article:modified_time" content="2023-01-02T15:56:56.066Z">
-<meta property="article:author" content="萌萌哒的小玉玉">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="小玉玉的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小玉玉的博客</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://CuteCuteYu.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-高交互平行蜜罐的基础知识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
-  <time datetime="2023-01-02T15:46:09.000Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      高交互平行蜜罐的基础知识
-    </h1>
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="什么是平行高交互蜜罐"><a href="#什么是平行高交互蜜罐" class="headerlink" title="什么是平行高交互蜜罐"></a>什么是平行高交互蜜罐</h1><p>平行高交互蜜罐就是在防守方网络范围中<strong>单独开辟出一整套独立的网络环境</strong>并且在网络环境<strong>外部也有</strong>“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的<strong>逻辑关系而又不具备敏感性的信息</strong>。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。</p>
-<p>高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的<strong>高可获权性和隐藏于逻辑外的额外溯源功能。</strong></p>
-<span id="more"></span>
 
-<h2 id="平行高交互式蜜罐的基本结构"><a href="#平行高交互式蜜罐的基本结构" class="headerlink" title="平行高交互式蜜罐的基本结构"></a>平行高交互式蜜罐的基本结构</h2><p>我们以传统概念上的网络可信任范围划分：</p>
-<h3 id="范围内："><a href="#范围内：" class="headerlink" title="范围内："></a>范围内：</h3><h4 id="服务端的蜜罐"><a href="#服务端的蜜罐" class="headerlink" title="服务端的蜜罐"></a>服务端的蜜罐</h4><p>具有平行模拟真实业务的服务端</p>
-<h4 id="独立的服务端数据存储"><a href="#独立的服务端数据存储" class="headerlink" title="独立的服务端数据存储"></a>独立的服务端数据存储</h4><p>用于存储产生的模拟交互和攻击者交互数据</p>
-<h4 id="用于溯源的资料存储"><a href="#用于溯源的资料存储" class="headerlink" title="用于溯源的资料存储"></a>用于溯源的资料存储</h4><p>攻击者交互过程中产生的所有信息的独立存储</p>
-<h4 id="黑白名单"><a href="#黑白名单" class="headerlink" title="黑白名单"></a>黑白名单</h4><p>用于区分攻击者交互和“客户端”蜜罐交互的黑白名单</p>
-<h4 id="溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）"><a href="#溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）" class="headerlink" title="溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）"></a>溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）</h4><p>用于溯源攻击者的相关工具</p>
-<h3 id="范围外："><a href="#范围外：" class="headerlink" title="范围外："></a>范围外：</h3><h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p>用于模拟用户的功能</p>
-<h4 id="专用于客户端的信息存储"><a href="#专用于客户端的信息存储" class="headerlink" title="专用于客户端的信息存储"></a>专用于客户端的信息存储</h4><p>用于收集攻击者可能攻击的业务风险而导致的用户数据安全从而进行溯源</p>
-<h1 id="高交互平行蜜罐与传统蜜罐的区别"><a href="#高交互平行蜜罐与传统蜜罐的区别" class="headerlink" title="高交互平行蜜罐与传统蜜罐的区别"></a>高交互平行蜜罐与传统蜜罐的区别</h1><p>传统蜜罐特点就是适用性强、布置速度和便捷性相对较好，但是缺点也很明显，交互内容太少并且数据可信度不高，时间节点上也看不出业务的逻辑性，所以很容易被发现。</p>
-<p>高交互式的蜜罐特点就是交互内容很多但是市面上现有的蜜罐都还是存在内容数据的可信度低的问题。</p>
-<p>平行高交互蜜罐具有完整的和真实业务有逻辑联系但是诱饵数据有脱敏保证的，并且交互内容是镜像与真实业务有完整逻辑闭环的蜜罐，可信度很高，但是缺点就是部署时间很长。</p>
-<h1 id="以最小成本为例讲企业如何实际部署"><a href="#以最小成本为例讲企业如何实际部署" class="headerlink" title="以最小成本为例讲企业如何实际部署"></a>以最小成本为例讲企业如何实际部署</h1><p>我们以上文中提到的基本结构为基础。</p>
-<h3 id="服务端的蜜罐："><a href="#服务端的蜜罐：" class="headerlink" title="服务端的蜜罐："></a>服务端的蜜罐：</h3><p>微服务，Saas等都是成本低、部署相对较快、可定制内容比较全面的应用</p>
-<h3 id="独立的服务端数据存储-1"><a href="#独立的服务端数据存储-1" class="headerlink" title="独立的服务端数据存储"></a>独立的服务端数据存储</h3><p>为了提高可信性，推荐使用与真实业务类似的架构但是规模上可以大幅度缩小的数据存储结构。也就是在交互外的内容只需要做到有就行，交互内的内容只需要做到“看起来足够就行”（可以使用数据填充或者用机器学习模拟数据等方式）。在部署时还要注意的就是时间戳一定要和真实业务有关联。</p>
-<h3 id="用户溯源的资料存储"><a href="#用户溯源的资料存储" class="headerlink" title="用户溯源的资料存储"></a>用户溯源的资料存储</h3><p>容量可以很小，结构可以简单，但是安全性和隐蔽性需要有保证必须是高优先级。</p>
-<h3 id="黑白名单-1"><a href="#黑白名单-1" class="headerlink" title="黑白名单"></a>黑白名单</h3><p>以规则形式存在即可</p>
-<h4 id="溯源的攻击工具"><a href="#溯源的攻击工具" class="headerlink" title="溯源的攻击工具"></a>溯源的攻击工具</h4><p>常用工具</p>
-<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><p>不限形式，能正常使用服务端功能即可，客户端数量越多越好</p>
-<h4 id="专用于客户端的信息存储-1"><a href="#专用于客户端的信息存储-1" class="headerlink" title="专用于客户端的信息存储"></a>专用于客户端的信息存储</h4><p>越小越好，但是必要的监控措施必须要有</p>
-<h1 id="平行高交互蜜罐的运行逻辑"><a href="#平行高交互蜜罐的运行逻辑" class="headerlink" title="平行高交互蜜罐的运行逻辑"></a>平行高交互蜜罐的运行逻辑</h1><h2 id="正常模拟"><a href="#正常模拟" class="headerlink" title="正常模拟"></a>正常模拟</h2><p>客户端会正常使用服务端的功能并且产生数据，这些数据会经过黑白名单的判断进到独立的服务端数据存储中，并且客户端本身的基本监控应该运行</p>
-<h2 id="攻击者"><a href="#攻击者" class="headerlink" title="攻击者"></a>攻击者</h2><p>攻击者会测试或者与服务端进行交互，交互产生的数据经过黑白名单判断进入用于溯源的资料存储，防守方利用这些资料使用溯源的攻击工具进行溯源。同时客户端如果收集到攻击者的数据可以直接传到用于溯源的资料存储中。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>充钱！对企业来说网络安全就是打游戏，每当企业的网络安全出现问题的时候我就会想起马老板的一句话：“充八万会这样？”</p>
+{% block content %}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cutecuteyu.github.io/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="clcezahvk000d4ctw9t3n8xuf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2023/01/02/%E4%B8%A4%E7%A7%8D%E7%A4%BE%E4%BC%9A%E4%B9%8B%E9%97%B4-%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          两种社会之间-网络侵犯行为的社会学研究
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/01/02/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">代码审计小提示</div>
-    </a>
-  
-</nav>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/01/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%BD%AA%EF%BC%9A%E5%88%A9%E6%B6%A6%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%8C%E4%BA%8F%E6%8D%9F%E7%A4%BE%E4%BC%9A%E5%8C%96/">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/">针对未成年人的网络犯罪思考</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/">语言交流中的驱动输入</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%AD%A6%E4%B9%A0/">学习社会工程学的意义以及如何正确学习</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/">网络空间安全在战争战略中的思考</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 萌萌哒的小玉玉<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

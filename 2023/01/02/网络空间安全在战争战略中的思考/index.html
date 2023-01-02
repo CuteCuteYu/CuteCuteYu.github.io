@@ -1,241 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>网络空间安全在战争战略中的思考 | 小玉玉的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言最近很多的攻击案例都有一种趋势就是几乎所有的攻击组织所选择的目标越来越倾向于基础设施，关于基础设施的网络安全思考这里不再赘述，主要是思考这种趋势所带来的关于战争战略中基础设施的保护面和攻击的相关思考。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="网络空间安全在战争战略中的思考">
-<meta property="og:url" content="https://cutecuteyu.github.io/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/index.html">
-<meta property="og:site_name" content="小玉玉的博客">
-<meta property="og:description" content="前言最近很多的攻击案例都有一种趋势就是几乎所有的攻击组织所选择的目标越来越倾向于基础设施，关于基础设施的网络安全思考这里不再赘述，主要是思考这种趋势所带来的关于战争战略中基础设施的保护面和攻击的相关思考。">
-<meta property="og:locale">
-<meta property="article:published_time" content="2023-01-02T15:46:58.000Z">
-<meta property="article:modified_time" content="2023-01-02T15:57:43.194Z">
-<meta property="article:author" content="萌萌哒的小玉玉">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="小玉玉的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">小玉玉的博客</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://CuteCuteYu.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-网络空间安全在战争战略中的思考" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" class="article-date">
-  <time datetime="2023-01-02T15:46:58.000Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      网络空间安全在战争战略中的思考
-    </h1>
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近很多的攻击案例都有一种趋势就是几乎所有的攻击组织所选择的目标越来越倾向于基础设施，关于基础设施的网络安全思考这里不再赘述，主要是思考这种趋势所带来的关于战争战略中基础设施的保护面和攻击的相关思考。</p>
-<span id="more"></span>
 
-<h1 id="战争战略的重要威胁中基础设施已经成为重中之重"><a href="#战争战略的重要威胁中基础设施已经成为重中之重" class="headerlink" title="战争战略的重要威胁中基础设施已经成为重中之重"></a>战争战略的重要威胁中基础设施已经成为重中之重</h1><h2 id="基础设施的概念"><a href="#基础设施的概念" class="headerlink" title="基础设施的概念"></a>基础设施的概念</h2><p>每个国家或者区域中对基础设施的具体标的虽然有些不同，但是基本的概念都是类似的：所有有关平民日常生活中必须会用到的设施就称为基础设施。</p>
-<p>从交通的概念：</p>
-<p> 1.道路（各种交通工具的通行载体如公路铁路航路等）</p>
-<p> 2.交通工具站点和存储点（地铁站、停车场等）</p>
-<p> 3.交通工具本身</p>
-<p> 4.交通工具所附带的控制系统（铁路控制系统、航空调度系统等）</p>
-<p> 交通工具是决定平民日常生活中的活动范围的一个重要的因素，并且也一定程度上能决定战争物资的运输和补充。</p>
-<p>从能源的概念：<br>1.能源本身</p>
-<p> 2.能源管道或运输途径</p>
-<p> 3.能源控制系统</p>
-<p> 4.能源使用终端</p>
-<p> 能源决定平民资源的基础获得途径也是在战争状况下的重要补给之一。</p>
-<p>以上只是简单的举例，具体的划分或者定义根据每个国家或地区的客观条件来决定。</p>
-<h3 id="基础设施的网络化与攻击面的思考"><a href="#基础设施的网络化与攻击面的思考" class="headerlink" title="基础设施的网络化与攻击面的思考"></a>基础设施的网络化与攻击面的思考</h3><p>在过去的三十年，基础设施的控制大部分是基于物理开关加人员手动控制完成的，这种状况下的攻击面也只是传统的物理威胁居多，这种威胁的特征就是接触的条件比较苛刻，需要实际地区接触控制点。</p>
-<p>但是随着工业互联网的普及和多层互联网综合应用的出现，网络攻击这种不需要物理接触、对物理距离不敏感、攻击成本大大降低的新威胁也对基础设施的安全提出了很多新的要求，</p>
-<p>而这种攻击面也不能以传统的企业网络安全思路来思考，在基础设施的网络建设中通常会独立出相对封闭的环境，因为所需要的业务对外的接口需求本来就不多，所以一旦碰到这种相对封闭的逻辑网络环境，那么对网络边界设备的物理环境的保护就显得至关重要，寻找网路边界设备的物理环境就成为了最有效的攻击方法。</p>
-<h1 id="如何完善基础设施在网络空间安全的保护"><a href="#如何完善基础设施在网络空间安全的保护" class="headerlink" title="如何完善基础设施在网络空间安全的保护"></a>如何完善基础设施在网络空间安全的保护</h1><h2 id="提高基础设施尤其是国家级或者地区级的网络安全重视程度"><a href="#提高基础设施尤其是国家级或者地区级的网络安全重视程度" class="headerlink" title="提高基础设施尤其是国家级或者地区级的网络安全重视程度"></a>提高基础设施尤其是国家级或者地区级的网络安全重视程度</h2><p>现阶段很多的重要基础设施依然停留在传统的企业安全的概念上来做网络安全，这种是不够的，需要提高到国家安全和地区安全的角度重新审视安全事件所带来的影响和保护体系的实践。</p>
-<h2 id="发展基于军警民三位一体的综合网络安全防护框架"><a href="#发展基于军警民三位一体的综合网络安全防护框架" class="headerlink" title="发展基于军警民三位一体的综合网络安全防护框架"></a>发展基于军警民三位一体的综合网络安全防护框架</h2><p>基础设施的安全威胁可能会同时来自国际战争和网络犯罪，最后受影响的是平民，所以在安全防护体系上要综合到军警民一体化的思考，就像现在的天眼系统这样，威胁来源思考要将地域范围扩大，安全事件影响要着重考虑社会秩序，体系建设要做到多样化防御。</p>
-<h2 id="安全意识建设要扩大到所有受影响的实体"><a href="#安全意识建设要扩大到所有受影响的实体" class="headerlink" title="安全意识建设要扩大到所有受影响的实体"></a>安全意识建设要扩大到所有受影响的实体</h2><p>不能将安全意识培训或者安全意识建设活动限制在又控制基础设施的人上，要尽可能多地扩展到所有使用不管是服务端还是客户端的所有有可能受到影响的所有实体，针对不同的人群安全意识培养的内容也要有针对性，并且主管部门要有完善的应急响应解决方案尤其是针对社会影响和社会秩序这两方面。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>基础设施的安全之所以重要是因为一旦出现安全事件对社会的总体秩序影响是非常大的，这对战争战略中的“影响民心”是非常重要的一点。所以我们应该不断重视基础设施，尤其是现在网络化的新基础设施的安全建设，尽可能地做到“既有高科技，用起来也放心”的程度。</p>
+{% block content %}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cutecuteyu.github.io/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" data-id="clcezahvi00084ctw732b1ckn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          学习社会工程学的意义以及如何正确学习
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/01/02/%E6%BA%AF%E6%BA%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">溯源的基本思路</div>
-    </a>
-  
-</nav>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/01/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%BD%AA%EF%BC%9A%E5%88%A9%E6%B6%A6%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%8C%E4%BA%8F%E6%8D%9F%E7%A4%BE%E4%BC%9A%E5%8C%96/">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/">针对未成年人的网络犯罪思考</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/">语言交流中的驱动输入</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%AD%A6%E4%B9%A0/">学习社会工程学的意义以及如何正确学习</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/">网络空间安全在战争战略中的思考</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2023 萌萌哒的小玉玉<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
