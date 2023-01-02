@@ -1,37 +1,574 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            社会工程学中队目标的量化思考 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">社会工程学中队目标的量化思考</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:44</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看到一篇文章（<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1595598032331759597&amp;wfr=spider&amp;for=pc%EF%BC%89">https://baijiahao.baidu.com/s?id=1595598032331759597&amp;wfr=spider&amp;for=pc）</a></p>
+<p>突然想起来有个‘ocean’模型没讲，也分享一些我对于社会工程学中如何去量化分析一个目标的相关的思考。我个人对于社会工程学这门学科的定位其实更加偏向于社会学这类，对于心理学相关的内容其实并不是最主要的部分。不过ocean模型也是一个很有效的目标分析手段，正好“剑桥分析事件”也是一个比较经典的案例，毕竟“选举”本身只是一个社会事件，但是“达到选举成功这个目的”就是个社会工程学手段了。所以今天就给大家分享以下我的个人看法。</p>
+<span id="more"></span>
+
+<h2 id="什么是ocean模型"><a href="#什么是ocean模型" class="headerlink" title="什么是ocean模型"></a>什么是ocean模型</h2><p>ocean模型，其实就是将人的性格分为五个维度（经验开放性、尽责性、外倾性、随和性、情绪稳定性）来划分特征的方式，我个人的观点对这五个维度的划分持保留态度，因为单纯的某个维度的低评分其实不足以概括所有的负面性格。</p>
+<h6 id="五个维度的介绍"><a href="#五个维度的介绍" class="headerlink" title="五个维度的介绍"></a>五个维度的介绍</h6><table>
+<thead>
+<tr>
+<th><strong>五要素维度</strong></th>
+<th><strong>行为／项目</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>经验开放性</td>
+<td>我喜欢到国外旅游、我喜欢去学校</td>
+</tr>
+<tr>
+<td>尽责性</td>
+<td>我通常会列出行动清单、我很少陷入麻烦</td>
+</tr>
+<tr>
+<td>外倾性</td>
+<td>我喜欢承担对他人的责任、我有一大群朋友</td>
+</tr>
+<tr>
+<td>随和性</td>
+<td>我是个富于同情心的人、我通常与他人相处愉快</td>
+</tr>
+<tr>
+<td>情绪稳定性</td>
+<td>我在压力情境下保持镇静、我能很好地接受个人批评</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="ocean模型的具体使用"><a href="#ocean模型的具体使用" class="headerlink" title="ocean模型的具体使用"></a>ocean模型的具体使用</h2><p>使用方式其实很简单，就是以这五个维度为基准，通过不同的接触方式（通常以社交媒体或者调查问卷等）收集到目标的信息，再从信息中抓取符合ocean模型的关键标志（如标点符号，动词，语气词，形容词等）来判断目标的特征。</p>
+<h2 id="个人对于ocean在社会工程学中的评价"><a href="#个人对于ocean在社会工程学中的评价" class="headerlink" title="个人对于ocean在社会工程学中的评价"></a>个人对于ocean在社会工程学中的评价</h2><p>在传统的心理学对个人评判的标准中，通常都有抽象性的指标会对目标个人做总体判断，虽然无论是评判规则还是结果分析都比ocean更加详细，但是如果考虑到实用性，也就是在大批量目标进行较短时间的一个分析的话ocean还是能给出一个能用的结果来做社交指导的。</p>
+<p>但是ocean的缺点也很明显，就是不能线性地分析目标地动态变化，因为收集的信息主要是单次（也就是时间线上某个节点）的信息，就算结合社交关系，也不能很好地判断目标所处的持续性状态。</p>
+<p>我个人的思考是在收集信息的过程中从单点收集转变为持续化地收集，通过事件线的方式来拖到就很容易了。比如可以使用关键词中的关联性和某些关键标志的变化来推导出目标的动态特征了，并且可以结合这个动态特征进一步地分析出目标的“隐性隐私”，这对于我们在做社工攻击时也会更加有利。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">补充知识：隐性隐私</span><br><span class="line">“不允许公开的已经在当前存在的信息”我们称为显性隐私。</span><br><span class="line">“不允许公开的不在当前存在的信息”我们称为隐性隐私。</span><br><span class="line">举例说明：</span><br><span class="line">我家楼下装修-&gt;显性隐私</span><br><span class="line">今后一段时间会很吵-&gt;隐性隐私</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于社会工程学中的量化指标"><a href="#关于社会工程学中的量化指标" class="headerlink" title="关于社会工程学中的量化指标"></a>关于社会工程学中的量化指标</h2><h3 id="为什么需要量化指标"><a href="#为什么需要量化指标" class="headerlink" title="为什么需要量化指标"></a>为什么需要量化指标</h3><p>虽然在我的观点中社会工程学是不太适用于某个“标准化流程”的，但是如果想系统地学习社会工程学这个学科还是需要很多‘指导性’的东西的。首先我们思考下社工这个动作是不是就是一个事件，那么既然是事件就会有事件的前、中、后三个阶段，那么事件前我们应该做怎样的工作便成为了“在社工中如何去做信息收集和前期准备”这个知识部分了。接下来，我们既然要提高自己的社工能力，就需要将社会经验武器化的一个过程，武器化就是让自己的某个既有经验或者知识能够普适化和具有可拓展性，为了达到这个目标所以我们就需要有一个可以量化的东西来作为我们的指导规则，这就是我们为什么需要一些社工的量化指标。</p>
+<h3 id="信息收集中的量化指标的如何指导我们下一步社工动作"><a href="#信息收集中的量化指标的如何指导我们下一步社工动作" class="headerlink" title="信息收集中的量化指标的如何指导我们下一步社工动作"></a>信息收集中的量化指标的如何指导我们下一步社工动作</h3><p>如果我们已经做好对目标的信息收集并且使用量化指标做出对目标的特征判断后，我们该怎么去使用这个判断来做下一步行动的指导呢？</p>
+<h6 id="接触点的决策"><a href="#接触点的决策" class="headerlink" title="接触点的决策"></a>接触点的决策</h6><p>我们可以针对目标的特征选择不同的方式与目标进行接触，在已经有特征判断的前提下我们的接触效率会提高并且隐蔽性也会更好（这里的隐蔽性是指目标‘意识到’这是社工）。比如在接触中我们可以使用目标感性上可以接受并且逻辑上更合理的方式作为我们的切入点。</p>
+<h6 id="交互中的语言选择与情感传染"><a href="#交互中的语言选择与情感传染" class="headerlink" title="交互中的语言选择与情感传染"></a>交互中的语言选择与情感传染</h6><p>如果我们判断出目标可能的心理状态和物理状态的动态变化我们就可以主动地对目标做交互引导，并且可以更容易地分析出目标的情感逻辑从而找到“情感路径”（也就是目标会认为攻击者更加具有‘共情能力’）。这样我们就可以更有效地获取到目标的信任以方便我们接下来的社工行动。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：社会工程学中队目标的量化思考</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:44</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/社会工程学中队目标的量化思考/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E6%BA%AF%E6%BA%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">溯源的基本思路</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BF%A1%E4%BB%BB%E8%8E%B7%E5%8F%96/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">社会工程学中的信任获取</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFocean%E6%A8%A1%E5%9E%8B"><span class="nav-text">什么是ocean模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%94%E4%B8%AA%E7%BB%B4%E5%BA%A6%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">五个维度的介绍</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ocean%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8"><span class="nav-text">ocean模型的具体使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E5%AF%B9%E4%BA%8Eocean%E5%9C%A8%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7"><span class="nav-text">个人对于ocean在社会工程学中的评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87"><span class="nav-text">关于社会工程学中的量化指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87"><span class="nav-text">为什么需要量化指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%AD%E7%9A%84%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87%E7%9A%84%E5%A6%82%E4%BD%95%E6%8C%87%E5%AF%BC%E6%88%91%E4%BB%AC%E4%B8%8B%E4%B8%80%E6%AD%A5%E7%A4%BE%E5%B7%A5%E5%8A%A8%E4%BD%9C"><span class="nav-text">信息收集中的量化指标的如何指导我们下一步社工动作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8E%A5%E8%A7%A6%E7%82%B9%E7%9A%84%E5%86%B3%E7%AD%96"><span class="nav-text">接触点的决策</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E4%B8%AD%E7%9A%84%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9%E4%B8%8E%E6%83%85%E6%84%9F%E4%BC%A0%E6%9F%93"><span class="nav-text">交互中的语言选择与情感传染</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

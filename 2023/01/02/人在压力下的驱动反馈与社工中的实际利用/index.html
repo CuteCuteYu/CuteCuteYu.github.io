@@ -1,37 +1,537 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            人在压力下的驱动反馈与社工中的实际利用 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">人在压力下的驱动反馈与社工中的实际利用</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:22</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="压力与驱动反馈"><a href="#压力与驱动反馈" class="headerlink" title="压力与驱动反馈"></a>压力与驱动反馈</h1><p>在心理学中，压力指人类或动物面对情绪上或身体上的有形或无形威胁时，无法正常回应的感受状态，这种状态是一种持续性的。在社会工程学中，压力是属于人的情感驱动中的一种具体表现，通常为负方向驱动，也就是和目标所期望方向相反的方向，这也是我们在寻找刚才提到的“威胁”的时候所要思考的路线。</p>
+<p>人在接受到驱动机制的影响的时候通常都会产生心理情感和行为导向，压力也是一样，人在面对压力的时候首先会思考的是“量化观念”，也就是时间等，因为人在面对到可能产生的“威胁”的时候（这里的威胁是指负方向的影响）会本能地将其尽可能地量化来识别和规避，而“压力”，尤其是实际生活中的压力可能来自于各种抽象的表现，所以会更加驱动着人去思考“压力的量”。</p>
+<p>其次，在“如何处理压力”这方面大部分人都会优先以“枚举方法”为最优先的思考逻辑，并且在这个过程中会放大枚举方法的数量带来的效果为自己减少压力，但这其中就会存在一些问题，比如每一种处理的方法是否有效等就没有去深入思考，或者方法之间的处理效率和效果上的比较也不会去深入思考。这也就是人在遇到压力的时候所作出的决策通常数量很多但是质量不可靠的原因。</p>
+<span id="more"></span>
+
+<h1 id="压力与社工"><a href="#压力与社工" class="headerlink" title="压力与社工"></a>压力与社工</h1><p>以上都是一些心理学上的简单介绍，但是我们在实际社工分析目标的过程中，要思考目标压力的来源，如果存在压力来源就需要从来源的社会属性上去扩展思考能不能将这个来源具象化到某一个具体社会事物中去。举个例子，社会工程学本身作用就是解决社会问题，那么如果说社会问题本身就是压力来源，就需要思考这个社会问题下所收影响或者所有有关联的社会事物能不能具象化到某一个上去，如果可以那么就针对于所具象化的社会事物去处理社会关系或者社会属性，这哥过程本身其实就是社会工程学的基本流程。</p>
+<p>如果我们需要给目标压力的时候该怎么去做呢？很简单，就是将我们在第一段中的分析中所出现的元素构造起来就可以了，首先是威胁，这个从何而来？我们可以使用最简单的社会需求出发，分析目标可能存在的社会需求，然后将这个需求与目标本身的社会关系挂钩，挂钩之后去放大这个社会需求的影响，就能够对目标形成压力来源。举个例子，现在我们想给某个目标压力来源，那么我们假设某个目标的社会需求是物质财富，然后现在目标的社会财富和某个与目标有社会关系的人挂钩，之后我们就可以从这个社会关系出发去寻找切入点，切入之后去放大这个社会关系和社会需求的影响，就能够对目标形成压力来源。</p>
+<p>那么之后的具体利用分析利用的思路又是怎么样的呢？同样我们按照第一段的思路去思考人在面对压力下的反馈过程就知道了。我们之前已经解决了压力来源的这个问题，那么接下来就是“如何去量化”这个过程了，也就是当我们在社工中利用压力的时候，不要用抽象的概念去引导目标，而是要给目标一个清晰的可以量化的东西出来。</p>
+<p>当我们做好量化这个工作之后，接下来就是重点了，也就是利用目标在“思考处理方法”的过程中所出现的问题，我们作为攻击者在交互的时候要对于每种解决方案要有意识地去阻止目标深入地去思考每种解决方案，而且要重点突出结局方案的数量来规避目标的有意识思考。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>压力是社工中比较常见的一种利用场景，也是一种很重要的情感驱动手段，当我们利用好压力这个东西的时候，得到的目标社会行为驱动的效果往往会超出我们的预期，因为人在遇到威胁的情况下不管是压力还是恐惧还是服从都是社会工程学中最有效利用的情感驱动，但同时也要注意，这种情感是需要我们负方向反馈来做的，所以对于目标与我们之间的信任关系的处理与人对人的权限维持中我们还需要通过后续的社工处理手段来弥补我们利用压力来驱动目标的缺点，最大的缺点当然是目标对于攻击者的总体正面评价是比较低的，所以我们之后如果需要利用正方向情感驱动的话就非常的困难，不过优点就是我们可以在最短的时间达到最大化的效果，这个优缺点的取舍就需要我们根据不同的社工场景来合理利用，尤其是目标所处的社会关系和心理状态，这两点在我们前期做对于目标的信息收集的时候要着重去考虑。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：人在压力下的驱动反馈与社工中的实际利用</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:22</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/人在压力下的驱动反馈与社工中的实际利用/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">杀毒软件基本原理</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E4%B8%A4%E7%A7%8D%E7%A4%BE%E4%BC%9A%E4%B9%8B%E9%97%B4-%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">两种社会之间-网络侵犯行为的社会学研究</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%8B%E5%8A%9B%E4%B8%8E%E9%A9%B1%E5%8A%A8%E5%8F%8D%E9%A6%88"><span class="nav-text">压力与驱动反馈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%8B%E5%8A%9B%E4%B8%8E%E7%A4%BE%E5%B7%A5"><span class="nav-text">压力与社工</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

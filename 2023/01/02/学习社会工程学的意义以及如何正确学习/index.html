@@ -1,37 +1,543 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            学习社会工程学的意义以及如何正确学习 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">学习社会工程学的意义以及如何正确学习</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:47:05</span>
+        <span class="mobile">2023-01-02 23:47</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>社会工程学中的内容很多都是基于社会学、心理学等相关的内容，所以在学习和利用的时候我们常常会陷入一些思考：</p>
+<p>学习社会工程学的意义是什么？</p>
+<p>很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？</p>
+<p>我们该抱着怎样的态度才算是“正确地”学习社会工程学？</p>
+<span id="more"></span>
+
+<h1 id="2-学习社会工程学的意义是什么？"><a href="#2-学习社会工程学的意义是什么？" class="headerlink" title="2.学习社会工程学的意义是什么？"></a>2.学习社会工程学的意义是什么？</h1><p>我们学习社会工程学从最基础的意义上来说就是帮助我们通过社交行为的手段解决我们所遇到的社会问题，这是最基础也是最容易理解的，但是我们有时候也会思考，学习社会工程学对我们人生的意义何在？控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助？这个帮助在我们的价值观念中是否是合情合理的？以下观点仅为我个人思考：</p>
+<h3 id="对于人生的意义："><a href="#对于人生的意义：" class="headerlink" title="对于人生的意义："></a>对于人生的意义：</h3><p>每个人都有每个人的人生追求和终极目的，我的人生追求就是阅览人间百态。所以对我而言学习社会工程学就是能够提高我对于社会定义上的人的观察和理解，并思考出人和人之间交互的底层的逻辑，并推导出在各个不同环境和演变下的社会的一些规律。这对我而言满足我的自我实现的需要，能让我达到我的目的。所以，学习社会工程学对于每个人的人生意义都不相同，每个人都有自己的学习的理由和属于自己的收获。</p>
+<h3 id="控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助："><a href="#控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助：" class="headerlink" title="控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助："></a>控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助：</h3><p>在社会生活中，我们会产生很多社会行为，这些社会行为又会为不同的目标带来不同的社会影响。我们学会这些东西是为了帮助自己提升个人价值，但是在这个价值之上还有一个就是遵循你所认为的这个社会的普世价值。什么是普世价值？就是社会上的大部分群体所认可的价值。所以在我们学习社会工程学和利用社会工程学的时候我们一定要遵循这个规律，不能将我们所学的知识或者技巧用于一些不符合社会普世价值的社会行为上。</p>
+<p>人是具有社会性的动物，在我的观念中，人所产生的所有社会行为最终只有一个目的那就是实现自己的社会价值，这种社会价值可以是很多表现方面，比如物质财富带来的社会认可，或者社交关系中的社会认可等等。所以我认为学习社会工程学带来的具体帮助就是能让我们更有效率地去实现我们的自我价值。</p>
+<h1 id="3-很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？"><a href="#3-很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？" class="headerlink" title="3.很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？"></a>3.很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？</h1><p>由于社会工程学这门学科所具有的控制和侵犯的作用，我们在生活中也会看到很多“非社会工程学”的社会组织行为，比如传销课程、pua课程等非法的社会组织行为，每个人看待的观点不同，我也仅仅是作为我个人的观点做一些简单的表达：</p>
+<p>首先，社会工程学是由具体的应用场景的，这门学科不能完全脱离于我们所处的具体环境来单独研究，所以对于这种传销课程或者PUA课程的“从场景出发的研究方向”是我们在学习社会工程学的时候需要学习和借鉴的地方。</p>
+<p>但是，我们还是应该时刻提醒自己，社会认可和社会价值的来源是来自于社会的普世价值的实现和评判，所以我们不管是在学习还是在使用的过程中一定要提醒自己不能够违反或者脱离社会的基本价值，最具体的表现就是不能够违背法律的规范。这很重要，我们作为社工的攻击者的时候不管是分析事件还是分析目标都要将我们攻击者也要带入到这个社会环境中来，所以我们一定要遵守法律的规范和社会的基本道德观念。</p>
+<h1 id="4-我们该抱着怎样的态度才算是“正确地”学习社会工程学？"><a href="#4-我们该抱着怎样的态度才算是“正确地”学习社会工程学？" class="headerlink" title="4.我们该抱着怎样的态度才算是“正确地”学习社会工程学？"></a>4.我们该抱着怎样的态度才算是“正确地”学习社会工程学？</h1><h2 id="对于任何知识都要抱有敬畏之心"><a href="#对于任何知识都要抱有敬畏之心" class="headerlink" title="对于任何知识都要抱有敬畏之心"></a>对于任何知识都要抱有敬畏之心</h2><p>对于任何知识，不管是社会工程学还是网络安全或者是其他知识，我个人的态度一向是抱有敬畏之心。如果一个人在学习某个知识的时候没有这个态度，那么学习的过程中就会轻视很多东西，用错很多东西，最后导致自己走向歧路。尊重知识本身的客观规律，尊重知识中的事物的客观规律是我们学习任何一门知识的最基础的态度。</p>
+<h2 id="社会工程学是用来帮助我们实现社会价值的，不是用来背离或者逃脱社会评判的"><a href="#社会工程学是用来帮助我们实现社会价值的，不是用来背离或者逃脱社会评判的" class="headerlink" title="社会工程学是用来帮助我们实现社会价值的，不是用来背离或者逃脱社会评判的"></a>社会工程学是用来帮助我们实现社会价值的，不是用来背离或者逃脱社会评判的</h2><p>学习社会工程学，我们的最终目的是帮助我们解决社会问题，实现社会价值。不管是学习或者使用社会工程学的哪一个部分我们都要想到这一点。我们作为人，其历史演进中所带来的社会属性是我们任何人都无法逃脱的，这是作为一个社会定义的人的局限性，我们要清楚地认识到这一点。</p>
+<h2 id="不要走火入魔，保持本心"><a href="#不要走火入魔，保持本心" class="headerlink" title="不要走火入魔，保持本心"></a>不要走火入魔，保持本心</h2><p>社会工程学在我们的生活中很实用，这是客观事实，但是我们也要知道，具体的应用场景由具体的分析方法，我们不能够什么场景，什么时候都去用社会工程学的方法去思考。我个人认为，人的价值除了社会的评价价值之外，还有人的自我评价价值，要实现这个价值，最重要的就是保持本心，保持本性，让自己是原来的自己才，又能在这个基础上去了解社会、他人和社会定义上的自己，这才算是“真正”学好了社会工程学。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：学习社会工程学的意义以及如何正确学习</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:47:05</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/学习社会工程学的意义以及如何正确学习/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">语言交流中的驱动输入</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">网络空间安全在战争战略中的思考</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%89%8D%E8%A8%80"><span class="nav-text">1.前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2.学习社会工程学的意义是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E4%BA%BA%E7%94%9F%E7%9A%84%E6%84%8F%E4%B9%89%EF%BC%9A"><span class="nav-text">对于人生的意义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%92%8C%E4%BA%86%E8%A7%A3%E4%BB%96%E4%BA%BA%E5%8F%8A%E7%A4%BE%E4%BC%9A%E8%83%BD%E5%AF%B9%E6%88%91%E4%BB%AC%E7%9A%84%E8%87%AA%E6%88%91%E4%BB%B7%E5%80%BC%E5%AE%9E%E7%8E%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B7%E4%BD%93%E7%9A%84%E5%B8%AE%E5%8A%A9%EF%BC%9A"><span class="nav-text">控制和了解他人及社会能对我们的自我价值实现有什么具体的帮助：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%BE%88%E5%A4%9A%E2%80%9C%E9%9D%9E%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E2%80%9D%E7%9A%84%E7%A4%BE%E4%BC%9A%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E4%B9%9F%E4%BC%9A%E6%8F%90%E5%88%B0%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%EF%BC%8C%E6%88%91%E4%BB%AC%E8%AF%A5%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%EF%BC%9F"><span class="nav-text">3.很多“非社会工程学”的社会组织行为也会提到相关内容，我们该如何看待？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%88%91%E4%BB%AC%E8%AF%A5%E6%8A%B1%E7%9D%80%E6%80%8E%E6%A0%B7%E7%9A%84%E6%80%81%E5%BA%A6%E6%89%8D%E7%AE%97%E6%98%AF%E2%80%9C%E6%AD%A3%E7%A1%AE%E5%9C%B0%E2%80%9D%E5%AD%A6%E4%B9%A0%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%EF%BC%9F"><span class="nav-text">4.我们该抱着怎样的态度才算是“正确地”学习社会工程学？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E4%BB%BB%E4%BD%95%E7%9F%A5%E8%AF%86%E9%83%BD%E8%A6%81%E6%8A%B1%E6%9C%89%E6%95%AC%E7%95%8F%E4%B9%8B%E5%BF%83"><span class="nav-text">对于任何知识都要抱有敬畏之心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E6%98%AF%E7%94%A8%E6%9D%A5%E5%B8%AE%E5%8A%A9%E6%88%91%E4%BB%AC%E5%AE%9E%E7%8E%B0%E7%A4%BE%E4%BC%9A%E4%BB%B7%E5%80%BC%E7%9A%84%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%94%A8%E6%9D%A5%E8%83%8C%E7%A6%BB%E6%88%96%E8%80%85%E9%80%83%E8%84%B1%E7%A4%BE%E4%BC%9A%E8%AF%84%E5%88%A4%E7%9A%84"><span class="nav-text">社会工程学是用来帮助我们实现社会价值的，不是用来背离或者逃脱社会评判的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E8%B5%B0%E7%81%AB%E5%85%A5%E9%AD%94%EF%BC%8C%E4%BF%9D%E6%8C%81%E6%9C%AC%E5%BF%83"><span class="nav-text">不要走火入魔，保持本心</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

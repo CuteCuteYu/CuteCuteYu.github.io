@@ -1,37 +1,552 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            社会工程学中的信任获取 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">社会工程学中的信任获取</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:37</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近看到一篇文章《通过社交媒体针对安全研究人员的社会工程学攻击活动》（<a target="_blank" rel="noopener" href="https://www.freebuf.com/news/261975.html%EF%BC%89">https://www.freebuf.com/news/261975.html）</a></p>
+<p>这篇文章其实算得上是一个比较经典的在网络安全中的社会工程学的实际利用了。整个事件的大概其实是某个攻击组织建立了一个文章发布平台获取业内人士的信任，之后利用这种信任与安全人员合作，合作的时候再投放恶意的样本进行供应链攻击。</p>
+<span id="more"></span>
+
+<h3 id="浅谈社会工程学中的信任获取渠道"><a href="#浅谈社会工程学中的信任获取渠道" class="headerlink" title="浅谈社会工程学中的信任获取渠道"></a>浅谈社会工程学中的信任获取渠道</h3><p>社会工程学中有一个很重要的部分就是与目标的接触。在以积极方向（也就是“善意的身份”）接触的时候往往最大的问题就是如何获取目标的信任。那么我们首先就来思考一下“信任”这种东西是从那些地方来的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">补充知识：积极方向</span><br><span class="line">在社会工程学对目标的分析中我们一般认为，人的所有动作与行为都会存在一个期望值，那么在社会工程学交互中，顺着期望值的方向进行交互我们称为“积极方向”，按着期望方向相反的交互我们称为“消极方向”。不一定消极方向都是不利于交互的，实际生活中“失望”、“恐惧”、“悲伤”等情绪都是可以用来做社会工程学交互的。</span><br></pre></td></tr></table></figure>
+
+<h5 id="信任来源的分类"><a href="#信任来源的分类" class="headerlink" title="信任来源的分类"></a>信任来源的分类</h5><p>我在这里以社工攻击过程作为分类分为以下两类：</p>
+<h6 id="1-攻击前所带来的信任："><a href="#1-攻击前所带来的信任：" class="headerlink" title="1.攻击前所带来的信任："></a>1.攻击前所带来的信任：</h6><p>这一部分主要是由攻击者在做身份准备的时候针对目标所处的社会环境中身份所自带的信任条件，比如某个领域的专家所自带的学术上的信任，或者目标的某个具有控制力的相对身份如上级领导等所自带的威权信任等。</p>
+<h6 id="2-攻击中所建立的信任："><a href="#2-攻击中所建立的信任：" class="headerlink" title="2.攻击中所建立的信任："></a>2.攻击中所建立的信任：</h6><p>这一类的信任是来自于在与目标接触中的行为诱导目标产生的信任，目标在观察攻击者的过程中推导出的信任。</p>
+<p><strong>那么通过上面的分类我们如何去寻找到可以有效利用的信任渠道呢？</strong>首先我们要考虑的就是渠道来源，这点和社会工程学中的信息来源原理类似，假设我们作为攻击者，那么我们就要去分析目标可能行动中有哪些切入点是被目标所允许的，找到之后我们就可以通过以下两种方式来利用信任渠道：</p>
+<h6 id="1-代理方式："><a href="#1-代理方式：" class="headerlink" title="1.代理方式："></a>1.代理方式：</h6><p>大致如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">信任来源处---------&gt;伪造或者代理信任凭据-----（接触）--------&gt;目标</span><br></pre></td></tr></table></figure>
+
+<p>这种方式是最方便的一种，可以很快速地建立于目标的身份逻辑与信任关系，缺点是风险较大，如果被信任来源所察觉则有可能直接越过攻击者告知目标所处风险。这种方式在生活中的实际利用可以参考“QQ飞车与老干妈”事件的过程。</p>
+<h6 id="2-原生建立"><a href="#2-原生建立" class="headerlink" title="2.原生建立"></a>2.原生建立</h6><p>大致如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">建立平台------（收集）-----&gt;信任凭据-----------（接触）---------&gt;目标</span><br></pre></td></tr></table></figure>
+
+<p>这种方式是最隐蔽的一种，文章开头提到的事件中也是利用这种方式建立的与目标的信任关系，缺点就是前期准备时间较长，投入的攻击成本较大。</p>
+<h3 id="如何分析社会工程学中的信任凭据有哪些"><a href="#如何分析社会工程学中的信任凭据有哪些" class="headerlink" title="如何分析社会工程学中的信任凭据有哪些"></a>如何分析社会工程学中的信任凭据有哪些</h3><p>刚才我们提到利用渠道的两种方式中都有一个很重要的东西叫做信任凭据，那么什么叫做信任凭据呢？信任凭据就是能被目标作为可信身份判断的依据。这种依据通产来源于两种判断逻辑：</p>
+<h6 id="1-固有身份带来的"><a href="#1-固有身份带来的" class="headerlink" title="1.固有身份带来的"></a>1.固有身份带来的</h6><p>这点比较好理解，也就是当攻击者带着这个身份时就会具有的某种社会承认度与期相关的可信度</p>
+<h6 id="2-身份所衍生的具体社会行为表现"><a href="#2-身份所衍生的具体社会行为表现" class="headerlink" title="2.身份所衍生的具体社会行为表现"></a>2.身份所衍生的具体社会行为表现</h6><p>在文章开头讲述的事件中，攻击者利用“安全人员”的身份所具有的表现（“也就是在论坛上发表具有一定真实性和可行度的文章”）来让目标与目标相关人员获得并识别这种判断逻辑，通过时间和传播度的累积进而产生“群体效应”（也就是成语“三人成虎”）所带来的信任凭据。</p>
+<h3 id="我们如何防范这类的社会工程学"><a href="#我们如何防范这类的社会工程学" class="headerlink" title="我们如何防范这类的社会工程学"></a>我们如何防范这类的社会工程学</h3><p>1.不要过度信任自己与他人的社会身份关系</p>
+<p>2.重点分析他人与自己接触的目的</p>
+<p>3.保护好个人的信息，在未分析出接触目的之前不要轻易与他人交互</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：社会工程学中的信任获取</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:37</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/社会工程学中的信任获取/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E9%98%9F%E7%9B%AE%E6%A0%87%E7%9A%84%E9%87%8F%E5%8C%96%E6%80%9D%E8%80%83/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">社会工程学中队目标的量化思考</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">杀毒软件基本原理</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%85%E8%B0%88%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BF%A1%E4%BB%BB%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93"><span class="nav-text">浅谈社会工程学中的信任获取渠道</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E4%BB%BB%E6%9D%A5%E6%BA%90%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">信任来源的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E6%94%BB%E5%87%BB%E5%89%8D%E6%89%80%E5%B8%A6%E6%9D%A5%E7%9A%84%E4%BF%A1%E4%BB%BB%EF%BC%9A"><span class="nav-text">1.攻击前所带来的信任：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%94%BB%E5%87%BB%E4%B8%AD%E6%89%80%E5%BB%BA%E7%AB%8B%E7%9A%84%E4%BF%A1%E4%BB%BB%EF%BC%9A"><span class="nav-text">2.攻击中所建立的信任：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E4%BB%A3%E7%90%86%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-text">1.代理方式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%8E%9F%E7%94%9F%E5%BB%BA%E7%AB%8B"><span class="nav-text">2.原生建立</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BF%A1%E4%BB%BB%E5%87%AD%E6%8D%AE%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">如何分析社会工程学中的信任凭据有哪些</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%9B%BA%E6%9C%89%E8%BA%AB%E4%BB%BD%E5%B8%A6%E6%9D%A5%E7%9A%84"><span class="nav-text">1.固有身份带来的</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E8%BA%AB%E4%BB%BD%E6%89%80%E8%A1%8D%E7%94%9F%E7%9A%84%E5%85%B7%E4%BD%93%E7%A4%BE%E4%BC%9A%E8%A1%8C%E4%B8%BA%E8%A1%A8%E7%8E%B0"><span class="nav-text">2.身份所衍生的具体社会行为表现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%E8%BF%99%E7%B1%BB%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6"><span class="nav-text">我们如何防范这类的社会工程学</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

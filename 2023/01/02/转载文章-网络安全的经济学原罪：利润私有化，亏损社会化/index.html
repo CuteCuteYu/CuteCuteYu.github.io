@@ -1,37 +1,536 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            转载文章-网络安全的经济学原罪：利润私有化，亏损社会化 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:47:34</span>
+        <span class="mobile">2023-01-02 23:47</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5Njc3NjM4MA==&mid=2651100047&idx=1&sn=a81135f6c16b4d4dabcb086cfe3f1049">原文</a></p>
+<blockquote>
+<p>科技和行业垄断巨头们为什么敢于大肆掠夺个人隐私数据，同时又不断挤压网络安全预算，无视由此给个人、社会和国家造成的巨大安全风险？例如，为什么手机运营商明知道SIM卡交换攻击的可怕，却并不愿采取（更高成本的）缓解措施？为什么如此多的美国互联网企业在隐私保护方面总是不见棺材不落泪？</p>
+</blockquote>
+<p>近日，网络安全大咖施奈尔（Bruce Schneier）在纽约时报撰文指出，<strong>后资本主义时代私营企业们之所以不愿意在网络安全上花钱，是“市场经济”的必然结果，因为企业可以把风险转嫁给纳税人和用户。</strong></p>
+<p>美国历史上最严重的黑客事件——SolarWinds供应链攻击暴露出的诸多问题中，SolarWinds自身的网络安全防御形同虚设，已经到了令人发指的地步。施奈尔认为SolarWinds作为一家垄断性的行业巨头，以“一己之力”给美国全社会带来不可估量的安全灾难，值得深刻反思。</p>
+<span id="more"></span>
+
+<p>施奈尔认为，资本和市场奖励公司的这种冒险精神，也就是所谓的<strong>“利润私有化，亏损社会化”。</strong>重视网络安全和隐私保护的企业会在竞争中处于不利地位，而不重视网络安全甚至侵犯用户隐私的企业，更有可能“野蛮生长”，并最终给国家网络安全带来系统性风险。</p>
+<p>以下是施奈尔文章原文，编译如下：</p>
+<p>2020年初，为俄罗斯政府工作的黑客组织入侵SolarWinds公司生产的一款广泛使用的网络管理软件（Orion）。这次黑客攻击使攻击者可以访问SolarWinds大约18,000个客户的计算机网络，其中包括美国政府机构，如国土安全部和国务院、美国核研究实验室、政府承包商、IT公司和非政府机构。</p>
+<p>这是一次规模空前的袭击，对美国国家安全产生重大影响。参议院情报委员会定于本周二举行听证会，对事件进行问责质询。</p>
+<p>当然，美国政府自身因网络防御能力不足应受到强烈谴责。但是，如果仅将黑客事件归咎为技术缺陷将掩盖一个导致网络安全困局的根本性问题——现代市场经济积极地奖励公司快速攫取短期利润并积极削减成本，其激励结构几乎可以确保<strong>“成功的”高科技公司推向市场的一定是不安全的产品和服务。</strong></p>
+<p>像所有营利性公司一样，SolarWinds致力于通过最小化成本和最大化利润来提高股东价值。该公司主要由Silver Lake和Thoma Bravo拥有，Thoma Bravo本身就是因削减成本而闻名的私募股权公司。</p>
+<p>能够成为行业领头羊，SolarWinds在网络安全上的投入自然是“低于行业平均水平”。该公司将其大部分软件工程外包给了便宜的海外程序员，尽管这通常会增加安全漏洞的风险。在2019年，在很长一段时间中，SolarWinds网络管理软件的更新服务器密码是妇孺皆知的“Solarwinds123”。显然，俄罗斯黑客不费吹灰之力就能入侵SolarWinds的电子邮件系统，并在那里潜伏了数月之久。</p>
+<p>SolarWinds公司的网络安全顾问表示，在他提出加强网络安全的建议被忽略之后，他辞职了。</p>
+<p>除了省钱以外，没有其他充分理由可以解释为什么SolarWinds要在网络安全上克扣预算，要知道SolarWinds的客户包括世界各地的政府机构，而花高价请来的技术顾问也强烈建议加强安全措施。</p>
+<p>正如经济学作家马特·斯托勒（Matt Stoller）的论断，网络安全对于技术公司来说是削减成本的首选项。因为除非客户被黑客入侵，否则客户不会注意到这些问题（产品和服务的安全很差劲），而即使客户信息或资产被盗，企业也没有太大损失，因为这些客户已经为产品支付过费用。换句话说，网络攻击的风险可以转移给客户。这种策略从长期来看是否会减少回头客？当然，这里存在危险，但是投资者过于关注短期收益，以至于他们通常愿意冒险。</p>
+<p>当这些网络安全（和隐私泄漏）风险主要由纳税人等其他方承担时，市场喜欢奖励公司的“冒险精神”。这被称为“利润私有化和亏损社会化”。这包括那些所谓的“大到不能倒闭”的公司，这也意味着整个社会都要为自己糟糕的商业决策付出代价。<strong>飞速发展的高科技公司危害了国家安全，将网络安全风险转移给客户，这恰恰是“市场机制”在起作用。</strong></p>
+<p>（对于吃瓜群众来说）类似的错位激励措施也会影响您个人的日常网络安全。您的智能手机容易遭受一种被称为SIM卡交换攻击的欺诈行为，因为电话公司希望使您能够轻松地频繁购买新手机，并且他们（移动公司）知道网络诈骗造成的损失主要由用户自己承担。收集、使用和出售您的个人数据的数据代理机构和征信机构不会花费大量金钱来保护您的数据，因为如果有人对其进行黑客攻击和窃取，这将是您自己的问题（损失）。</p>
+<p>社交媒体公司倾向放任仇恨言论和错误信息在其平台上泛滥成灾，因为删除这些言论的过程既昂贵又复杂，而且（这些煽动性的误导性的）言论不会给平台带来直接损失。<strong>实际上，无论何种性质的用户参与（例如：谣言、炒作），社交媒体平台都将从中获利。</strong></p>
+<p>有两个问题需要解决。首先是信息不对称：购买者无法充分判断软件产品或公司行为的安全性。其次是错误的激励机制：市场鼓励公司基于自身利益做出决策，即使这会损害社会的广泛利益。<strong>这两个问题共同导致公司倾向通过承担更大的（网络安全和合规）风险来节省资金，然后将这种风险转嫁给这个国家的每一个人。</strong></p>
+<p>迫使企业为客户和用户提供（充分）安全保护功能的唯一方法是政府干预。通过法律、法规强制企业为不安全因素支付真实成本（编者：例如每泄漏一条病例的罚款金额需要与真实损失和必要的威慑性挂钩）。政府通常会制定（人身与健康）安全法规，例如污染标准、汽车安全带、无铅汽油、食品安全法规。今天，我们需要对网络安全做同样的事情：美国联邦政府应为软件和软件开发设定最低安全标准。</p>
+<p>在当今监管不足的市场中，像SolarWinds这样的软件公司太容易通过克扣安全支出来节省成本，提升财务表现。在当今的自由市场世界中，这是一个“理性”的决定，而扭转局面的唯一方法就是从根本上改变（蔑视）网络安全的经济动机。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:47:34</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/转载文章-网络安全的经济学原罪：利润私有化，亏损社会化/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E9%92%88%E5%AF%B9%E6%9C%AA%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%80%9D%E8%80%83/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">针对未成年人的网络犯罪思考</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

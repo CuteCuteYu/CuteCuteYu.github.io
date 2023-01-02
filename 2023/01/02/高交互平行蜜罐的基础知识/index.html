@@ -1,37 +1,553 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            高交互平行蜜罐的基础知识 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">高交互平行蜜罐的基础知识</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:09</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="什么是平行高交互蜜罐"><a href="#什么是平行高交互蜜罐" class="headerlink" title="什么是平行高交互蜜罐"></a>什么是平行高交互蜜罐</h1><p>平行高交互蜜罐就是在防守方网络范围中<strong>单独开辟出一整套独立的网络环境</strong>并且在网络环境<strong>外部也有</strong>“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的<strong>逻辑关系而又不具备敏感性的信息</strong>。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。</p>
+<p>高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的<strong>高可获权性和隐藏于逻辑外的额外溯源功能。</strong></p>
+<span id="more"></span>
+
+<h2 id="平行高交互式蜜罐的基本结构"><a href="#平行高交互式蜜罐的基本结构" class="headerlink" title="平行高交互式蜜罐的基本结构"></a>平行高交互式蜜罐的基本结构</h2><p>我们以传统概念上的网络可信任范围划分：</p>
+<h3 id="范围内："><a href="#范围内：" class="headerlink" title="范围内："></a>范围内：</h3><h4 id="服务端的蜜罐"><a href="#服务端的蜜罐" class="headerlink" title="服务端的蜜罐"></a>服务端的蜜罐</h4><p>具有平行模拟真实业务的服务端</p>
+<h4 id="独立的服务端数据存储"><a href="#独立的服务端数据存储" class="headerlink" title="独立的服务端数据存储"></a>独立的服务端数据存储</h4><p>用于存储产生的模拟交互和攻击者交互数据</p>
+<h4 id="用于溯源的资料存储"><a href="#用于溯源的资料存储" class="headerlink" title="用于溯源的资料存储"></a>用于溯源的资料存储</h4><p>攻击者交互过程中产生的所有信息的独立存储</p>
+<h4 id="黑白名单"><a href="#黑白名单" class="headerlink" title="黑白名单"></a>黑白名单</h4><p>用于区分攻击者交互和“客户端”蜜罐交互的黑白名单</p>
+<h4 id="溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）"><a href="#溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）" class="headerlink" title="溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）"></a>溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）</h4><p>用于溯源攻击者的相关工具</p>
+<h3 id="范围外："><a href="#范围外：" class="headerlink" title="范围外："></a>范围外：</h3><h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p>用于模拟用户的功能</p>
+<h4 id="专用于客户端的信息存储"><a href="#专用于客户端的信息存储" class="headerlink" title="专用于客户端的信息存储"></a>专用于客户端的信息存储</h4><p>用于收集攻击者可能攻击的业务风险而导致的用户数据安全从而进行溯源</p>
+<h1 id="高交互平行蜜罐与传统蜜罐的区别"><a href="#高交互平行蜜罐与传统蜜罐的区别" class="headerlink" title="高交互平行蜜罐与传统蜜罐的区别"></a>高交互平行蜜罐与传统蜜罐的区别</h1><p>传统蜜罐特点就是适用性强、布置速度和便捷性相对较好，但是缺点也很明显，交互内容太少并且数据可信度不高，时间节点上也看不出业务的逻辑性，所以很容易被发现。</p>
+<p>高交互式的蜜罐特点就是交互内容很多但是市面上现有的蜜罐都还是存在内容数据的可信度低的问题。</p>
+<p>平行高交互蜜罐具有完整的和真实业务有逻辑联系但是诱饵数据有脱敏保证的，并且交互内容是镜像与真实业务有完整逻辑闭环的蜜罐，可信度很高，但是缺点就是部署时间很长。</p>
+<h1 id="以最小成本为例讲企业如何实际部署"><a href="#以最小成本为例讲企业如何实际部署" class="headerlink" title="以最小成本为例讲企业如何实际部署"></a>以最小成本为例讲企业如何实际部署</h1><p>我们以上文中提到的基本结构为基础。</p>
+<h3 id="服务端的蜜罐："><a href="#服务端的蜜罐：" class="headerlink" title="服务端的蜜罐："></a>服务端的蜜罐：</h3><p>微服务，Saas等都是成本低、部署相对较快、可定制内容比较全面的应用</p>
+<h3 id="独立的服务端数据存储-1"><a href="#独立的服务端数据存储-1" class="headerlink" title="独立的服务端数据存储"></a>独立的服务端数据存储</h3><p>为了提高可信性，推荐使用与真实业务类似的架构但是规模上可以大幅度缩小的数据存储结构。也就是在交互外的内容只需要做到有就行，交互内的内容只需要做到“看起来足够就行”（可以使用数据填充或者用机器学习模拟数据等方式）。在部署时还要注意的就是时间戳一定要和真实业务有关联。</p>
+<h3 id="用户溯源的资料存储"><a href="#用户溯源的资料存储" class="headerlink" title="用户溯源的资料存储"></a>用户溯源的资料存储</h3><p>容量可以很小，结构可以简单，但是安全性和隐蔽性需要有保证必须是高优先级。</p>
+<h3 id="黑白名单-1"><a href="#黑白名单-1" class="headerlink" title="黑白名单"></a>黑白名单</h3><p>以规则形式存在即可</p>
+<h4 id="溯源的攻击工具"><a href="#溯源的攻击工具" class="headerlink" title="溯源的攻击工具"></a>溯源的攻击工具</h4><p>常用工具</p>
+<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><p>不限形式，能正常使用服务端功能即可，客户端数量越多越好</p>
+<h4 id="专用于客户端的信息存储-1"><a href="#专用于客户端的信息存储-1" class="headerlink" title="专用于客户端的信息存储"></a>专用于客户端的信息存储</h4><p>越小越好，但是必要的监控措施必须要有</p>
+<h1 id="平行高交互蜜罐的运行逻辑"><a href="#平行高交互蜜罐的运行逻辑" class="headerlink" title="平行高交互蜜罐的运行逻辑"></a>平行高交互蜜罐的运行逻辑</h1><h2 id="正常模拟"><a href="#正常模拟" class="headerlink" title="正常模拟"></a>正常模拟</h2><p>客户端会正常使用服务端的功能并且产生数据，这些数据会经过黑白名单的判断进到独立的服务端数据存储中，并且客户端本身的基本监控应该运行</p>
+<h2 id="攻击者"><a href="#攻击者" class="headerlink" title="攻击者"></a>攻击者</h2><p>攻击者会测试或者与服务端进行交互，交互产生的数据经过黑白名单判断进入用于溯源的资料存储，防守方利用这些资料使用溯源的攻击工具进行溯源。同时客户端如果收集到攻击者的数据可以直接传到用于溯源的资料存储中。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>充钱！对企业来说网络安全就是打游戏，每当企业的网络安全出现问题的时候我就会想起马老板的一句话：“充八万会这样？”</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：高交互平行蜜罐的基础知识</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:09</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/高交互平行蜜罐的基础知识/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E4%B8%A4%E7%A7%8D%E7%A4%BE%E4%BC%9A%E4%B9%8B%E9%97%B4-%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">两种社会之间-网络侵犯行为的社会学研究</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">代码审计小提示</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%8C%E9%AB%98%E4%BA%A4%E4%BA%92%E8%9C%9C%E7%BD%90"><span class="nav-text">什么是平行高交互蜜罐</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E8%A1%8C%E9%AB%98%E4%BA%A4%E4%BA%92%E5%BC%8F%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-text">平行高交互式蜜罐的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E5%86%85%EF%BC%9A"><span class="nav-text">范围内：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%9C%9C%E7%BD%90"><span class="nav-text">服务端的蜜罐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><span class="nav-text">独立的服务端数据存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E6%BA%AF%E6%BA%90%E7%9A%84%E8%B5%84%E6%96%99%E5%AD%98%E5%82%A8"><span class="nav-text">用于溯源的资料存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-text">黑白名单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%AF%E6%BA%90%E7%9A%84%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9B%B4%E6%8E%A5%E9%83%A8%E7%BD%B2%E3%80%81%E6%8E%A8%E8%8D%90%E5%8D%95%E7%8B%AC%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%EF%BC%89"><span class="nav-text">溯源的攻击工具（不推荐在服务端直接部署、推荐单独的网络环境）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E5%A4%96%EF%BC%9A"><span class="nav-text">范围外：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%93%E7%94%A8%E4%BA%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8"><span class="nav-text">专用于客户端的信息存储</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E4%B8%8E%E4%BC%A0%E7%BB%9F%E8%9C%9C%E7%BD%90%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">高交互平行蜜罐与传统蜜罐的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A5%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC%E4%B8%BA%E4%BE%8B%E8%AE%B2%E4%BC%81%E4%B8%9A%E5%A6%82%E4%BD%95%E5%AE%9E%E9%99%85%E9%83%A8%E7%BD%B2"><span class="nav-text">以最小成本为例讲企业如何实际部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E8%9C%9C%E7%BD%90%EF%BC%9A"><span class="nav-text">服务端的蜜罐：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-1"><span class="nav-text">独立的服务端数据存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%BA%AF%E6%BA%90%E7%9A%84%E8%B5%84%E6%96%99%E5%AD%98%E5%82%A8"><span class="nav-text">用户溯源的资料存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%91%E7%99%BD%E5%90%8D%E5%8D%95-1"><span class="nav-text">黑白名单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%AF%E6%BA%90%E7%9A%84%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7"><span class="nav-text">溯源的攻击工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF-1"><span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%93%E7%94%A8%E4%BA%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8-1"><span class="nav-text">专用于客户端的信息存储</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E8%A1%8C%E9%AB%98%E4%BA%A4%E4%BA%92%E8%9C%9C%E7%BD%90%E7%9A%84%E8%BF%90%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-text">平行高交互蜜罐的运行逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E6%A8%A1%E6%8B%9F"><span class="nav-text">正常模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E8%80%85"><span class="nav-text">攻击者</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

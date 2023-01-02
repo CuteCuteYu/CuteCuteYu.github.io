@@ -1,37 +1,559 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            两种社会之间-网络侵犯行为的社会学研究 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">两种社会之间-网络侵犯行为的社会学研究</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:15</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><h3 id="对于网络侵犯行为的社会学研究"><a href="#对于网络侵犯行为的社会学研究" class="headerlink" title="对于网络侵犯行为的社会学研究"></a>对于网络侵犯行为的社会学研究</h3><p>对于“侵犯目的”的描述我个人态度始于书中不一致的，书中仅仅是定义“个体或者群体之间目的不同”而产生的交互行为才被认为是侵犯行为，但是在社会工程学中我们不能用这种狭义的定义模式，很多时候，共同目的也是社会工程学的思考方向之一。</p>
+<p>对于国内研究中的碎片化现象我是很同意的，尤其是当前国内网络侵犯行为的研究缺乏整体性、系统性。研究的学科之前联系没有搭建起来，跨学科研究的课题在国内一直是属于比较困难的。社会工程学我个人的思考一直是一种综合性的学科，涉及社会心理学，社会学，行为经济学，心理学，博弈论，传播理论等多个学科，单纯地从某一学科来看社会工程学事件都是不完整的，不系统的。</p>
+<p>在理论与经验研究之间的不同这一点，我觉得现在的社会工程学相关文献及研究都还是比较统一的，这点详细描述就是所得到的结果或者某种“标准化”是否具有可复现的条件并复现结果是否具有某种相似性。</p>
+<p>书中提到研究网络侵犯行为的前提是“网络社会”与“现实社会”中存在不同作为出发点。我个人认为其实“网络社会”中的侵犯行为其实出发点就是来源于“现实社会”，所有的不管是不是基于网络安全的社会工程学事件都是出发于“现实社会”的需求与条件。</p>
+<span id="more"></span>
+
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><h3 id="网络侵犯行为的发生空间"><a href="#网络侵犯行为的发生空间" class="headerlink" title="网络侵犯行为的发生空间"></a>网络侵犯行为的发生空间</h3><p>书中以“网络空间”作为相对独立的实体作为思考，我个人的思考方向会更多地将“网络空间”作为“现实空间”的一种附属关系来看待。</p>
+<p>书中这部分简单介绍了国内互联网的发展历程及特点，这里我简单地总结为四个：网民数量的增加，网络应用的增加，上网时间的增加，网络普及的年龄增加，这里需要稍微说一下年龄，这里的年龄增加是双向的，并不是单纯的越来越多的青少年上网或者接触互联网的年龄减少，而是也有很多老年人也在接触学习互联网，这种年龄增加的趋势时双向的，我们应该看到这种现象。</p>
+<p>对于网络文化的描述除了书中提到的开放性、匿名性、去中心化之外，还有就是网络文化与传统社会学研究中对于社会人群的不同特点尤其是社交特点也应该归纳在网络社交中。</p>
+<p>对于网络社交中的“场景”，书中认为这种场景是缺失的，但是我个人认为这种“交流场景”其实并不缺失，在网络交流中，很多的交流应用和渠道就可以看作是交流的“场景”作为我们网络社会研究的“场景”（当然，不仅限于应用或渠道，基础设施，网络文化环境，现实社会场景等都应该纳入‘场景考虑’中）。</p>
+<p>书中提到网络社会的“开放性”和“匿名性”让更多来自于不同“现实地域文化”的人开始互相交流从而产生更多的“交流认同”与“交流冲突”，这点我是非常认同的，并且应该作为我们研究社会工程学所考虑的最主要的一种因素，除此之外，我们还应该深入地思考这种认同与冲突会给“现实地域文化”所带来的各种影响，这样“网络社交”与“现实社会”就产生了一个闭环，就更有利于我们进行尤其是社会学相关的研究。</p>
+<p>还有就是书中提到“网络交流”会缺乏我们对于“现实肉体”也就是穿着、肢体语言、面部表情等相关的判断。但我们也应该看到，互联网交流反而能看到我们更多的关于我们的个人信息，这种信息不是传统社会交流中的“标签化”和“泛定义化”的，而是“具体到个人标签”的信息，具有完全可独立的分析条件，也比现实社会中的个人特点更加具有独特性。</p>
+<p>网络社会的“匿名性”和“虚拟性”导致了个人在网络社交中会对自己的社交形象进行“移植与改造”，这点其实是社会工程学研究的重点之一，尤其是基于网络社交的社会工程学。但是这种“改造的差异性”书中提到是由于“人不会一直在网络社会中”，我个人认为其实这是不全面的，诚然，时间的限制确实无法让我们完全“复制”自己的社交理念与社交形象，但是还有一种情况就是为了在社交环境中获得更多的资源或者在某种社交环境中或者一定的“优势地位”而故意进行的“伪造”，这就是社会工程学中的“形象管理”中非常重要的环节。</p>
+<h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2><h3 id="网络侵犯行为的生成机制"><a href="#网络侵犯行为的生成机制" class="headerlink" title="网络侵犯行为的生成机制"></a>网络侵犯行为的生成机制</h3><p>由于“网络社交的跨时空”的特点，网络侵犯行为的很多因素都不能使用传统的社会学的思考。即双方有同时在场，一方缺场，同时缺场三种情况。</p>
+<p>书中认为“网络社会的开放性”导致人在网络社交中会具有不确定性，我不太认同这种观点，我认为人的社交的确定性是不受“网络社交”与“现实社交”的区别的，人会根据自己的社交偏好和文化习惯在“网络社交”中更加具有确定性，因为人在“现实社交”中所具有的“主动选择”会受到传统物理环境的限制，但是在“网络社交”中由于没有这种限制那么人的社交确定性会更加明显。</p>
+<p>书中认为“人”所收到的社交影响只是基于时间的因素，其实这稍微有点局限，人所受到的社交影响是多方面的，从客体来说就有“社交对象”和“交流信息”这些因素也会对网络社交的主体带来影响。</p>
+<p>书中提到一种以“社交总时间”为Y轴，以“交流频次”为X轴的一种象限图，这是一种很好的社会工程学中人际关系分析的可用工具。但是书中的观点认为在传统的“现实社交”中“社交总时间长、交流频次多”是人最主要的人际关系，我认为这个是不全面的，这根据每个人的交流习惯和文化环境存在不确定性。</p>
+<p>书中提到“主动选择”在网络社交中是没有限制的，这点其实也是不准确的，人的“主动选择”在网络社交中其实也会收到诸如“社交渠道的垄断性”等的限制。</p>
+<p>作者认为“现实社会是网络侵犯行为的助推器”也就是“起因”，这其实是不全面的，“现实社会”不仅是“起因”，也是“结果和目的”。</p>
+<p>“群体心理是侵犯行为的内在驱动”。这点中“群体心理”我举得不太全面，“群体社会环境”和“群体文化”也应该纳入“侵犯行为”的考虑中，这里的意思就是不仅仅使用心理学中的东西来思考“群体”这种概念，还应该使用社会学和舆论传播学中的“群体概念”来做思考。</p>
+<h2 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h2><h3 id="网络侵犯行为的类型与特征"><a href="#网络侵犯行为的类型与特征" class="headerlink" title="网络侵犯行为的类型与特征"></a>网络侵犯行为的类型与特征</h3><p>类型的划分我个人比较认同，从“主谓宾”三个结构来分析，也就是“实施者”、“实施行为”、“被实施者”三个部分来理解的，这也是在社会工程学总体分析中非常重要的框架。</p>
+<p>书中在描述特征时把“利益诉求”作为单独的一种特征来描述，这点我不太认同，“利益诉求”其实表现的方式就可以衍生出书中描述的所有其他特点比如“情绪宣泄”和“观点表达”等。不应该单独地来看待，而是应该以“利益诉求”为基础点出发衍生地去思考其他特征的来源，正好书中下一节就讲了这种变化也就是第四章的第三小节“不同类型网络侵犯行为之间的变化”。</p>
+<h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><h3 id="网络侵犯行为的运作特点"><a href="#网络侵犯行为的运作特点" class="headerlink" title="网络侵犯行为的运作特点"></a>网络侵犯行为的运作特点</h3><p>运作过程中的“本土化特点”其实就很好地描述了“网络社交”的文化环境和社会环境。不同的文化环境和社会环境的差异就是网络侵犯行为的出发点这点其实就是前面所讲的“利益诉求”的基础条件之一。</p>
+<p>书中提到“网络社会的其他群体会对网络侵犯行为的双方，也就是实施者和被实施者都会产生影响”，这点我非常认同，并且也是在社会工程学中很少研究的点。社会工程的交互不应该仅限于传统的“点对点交流”，而是应该做更加宽泛的“群体化”和“多边化”思考。</p>
+<p>书中关于“全球化背景下的地方性”论述很不错，不仅是“全球化”，也提到了“全国化中的不同地区的地方性”。</p>
+<h2 id="第六部分"><a href="#第六部分" class="headerlink" title="第六部分"></a>第六部分</h2><h3 id="网络侵犯行为的社会影响"><a href="#网络侵犯行为的社会影响" class="headerlink" title="网络侵犯行为的社会影响"></a>网络侵犯行为的社会影响</h3><p>“社会影响”以及“对被实施者的影响”作者是以行为类型分类的，我个人认为这并不准确，社会影响我个人认为应该从“被实施者的社交环境变化”和“被实施者的主观条件”来思考会更加准确和全面。</p>
+<h2 id="第七部分"><a href="#第七部分" class="headerlink" title="第七部分"></a>第七部分</h2><h3 id="网络侵犯行为的社会控制"><a href="#网络侵犯行为的社会控制" class="headerlink" title="网络侵犯行为的社会控制"></a>网络侵犯行为的社会控制</h3><p>这里的社会控制书中不是仅限于“实施者对社会的影响”，而是从整个行为过程来理解的，这点是非常认同的。</p>
+<p>社会控制书中的概念是社会学中的“社会控制”，也就是“可预期，可秩序化的社会状态”。</p>
+<p>书中认为社会控制应该从“网络社会”和“现实社会”两个方面进行，这点我非常同意。规范化和法律化的过程不能仅限于“某个单一状态的个体”。</p>
+<p>在社会控制路径中提到“明确类型”、“建立机制”、“创建规范”、“多元化”、“加强教育”、“预警机制”这六点，其实我个人认为逻辑不太好理解，“建立机制”中就已经包含其他五点了，建立机制的基础就是明确类型，建立机制的表现之一就是创建规范、加强教育和预警机制，建立机制的宏观结构就是多元化。</p>
+<h2 id="本书总体评价"><a href="#本书总体评价" class="headerlink" title="本书总体评价"></a>本书总体评价</h2><p>很好地从社会学角度分析了“网络社交中的侵犯行为”，从逻辑中的宏观结构探讨了网络空间中的社交特点。并且书中提到的很好的网络社交的安全管理的宏观方案。</p>
+<p>缺点就是依然没有很好地论证“网络社会”与“现实社会”的相互关系，仅仅从事件触发论述了相互关系中的“嵌套”是如何产生的。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：两种社会之间-网络侵犯行为的社会学研究</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:15</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/两种社会之间-网络侵犯行为的社会学研究/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E4%BA%BA%E5%9C%A8%E5%8E%8B%E5%8A%9B%E4%B8%8B%E7%9A%84%E9%A9%B1%E5%8A%A8%E5%8F%8D%E9%A6%88%E4%B8%8E%E7%A4%BE%E5%B7%A5%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%99%85%E5%88%A9%E7%94%A8/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">人在压力下的驱动反馈与社工中的实际利用</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">高交互平行蜜罐的基础知识</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86"><span class="nav-text">第一部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6"><span class="nav-text">对于网络侵犯行为的社会学研究</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86"><span class="nav-text">第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%8F%91%E7%94%9F%E7%A9%BA%E9%97%B4"><span class="nav-text">网络侵犯行为的发生空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86"><span class="nav-text">第三部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%94%9F%E6%88%90%E6%9C%BA%E5%88%B6"><span class="nav-text">网络侵犯行为的生成机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86"><span class="nav-text">第四部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%89%B9%E5%BE%81"><span class="nav-text">网络侵犯行为的类型与特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86"><span class="nav-text">第五部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E8%BF%90%E4%BD%9C%E7%89%B9%E7%82%B9"><span class="nav-text">网络侵犯行为的运作特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86"><span class="nav-text">第六部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D"><span class="nav-text">网络侵犯行为的社会影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E9%83%A8%E5%88%86"><span class="nav-text">第七部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E6%8E%A7%E5%88%B6"><span class="nav-text">网络侵犯行为的社会控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E4%B9%A6%E6%80%BB%E4%BD%93%E8%AF%84%E4%BB%B7"><span class="nav-text">本书总体评价</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,23 +1,536 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+    
+<link rel="stylesheet" href="/css/brands.min.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+    
+<link rel="stylesheet" href="/css/solid.min.css">
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+    
+<link rel="stylesheet" href="/css/regular.min.css">
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="active" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="active" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/01/02/%E4%B8%A4%E7%A7%8D%E7%A4%BE%E4%BC%9A%E4%B9%8B%E9%97%B4-%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6/">
+                        两种社会之间-网络侵犯行为的社会学研究
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><h3 id="对于网络侵犯行为的社会学研究"><a href="#对于网络侵犯行为的社会学研究" class="headerlink" title="对于网络侵犯行为的社会学研究"></a>对于网络侵犯行为的社会学研究</h3><p>对于“侵犯目的”的描述我个人态度始于书中不一致的，书中仅仅是定义“个体或者群体之间目的不同”而产生的交互行为才被认为是侵犯行为，但是在社会工程学中我们不能用这种狭义的定义模式，很多时候，共同目的也是社会工程学的思考方向之一。</p>
+<p>对于国内研究中的碎片化现象我是很同意的，尤其是当前国内网络侵犯行为的研究缺乏整体性、系统性。研究的学科之前联系没有搭建起来，跨学科研究的课题在国内一直是属于比较困难的。社会工程学我个人的思考一直是一种综合性的学科，涉及社会心理学，社会学，行为经济学，心理学，博弈论，传播理论等多个学科，单纯地从某一学科来看社会工程学事件都是不完整的，不系统的。</p>
+<p>在理论与经验研究之间的不同这一点，我觉得现在的社会工程学相关文献及研究都还是比较统一的，这点详细描述就是所得到的结果或者某种“标准化”是否具有可复现的条件并复现结果是否具有某种相似性。</p>
+<p>书中提到研究网络侵犯行为的前提是“网络社会”与“现实社会”中存在不同作为出发点。我个人认为其实“网络社会”中的侵犯行为其实出发点就是来源于“现实社会”，所有的不管是不是基于网络安全的社会工程学事件都是出发于“现实社会”的需求与条件。</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 02 2023 23:46:15 GMT+0800">2023-01-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2023/01/02/%E4%B8%A4%E7%A7%8D%E7%A4%BE%E4%BC%9A%E4%B9%8B%E9%97%B4-%E7%BD%91%E7%BB%9C%E4%BE%B5%E7%8A%AF%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%AD%A6%E7%A0%94%E7%A9%B6/">Read more&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        高交互平行蜜罐的基础知识
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="什么是平行高交互蜜罐"><a href="#什么是平行高交互蜜罐" class="headerlink" title="什么是平行高交互蜜罐"></a>什么是平行高交互蜜罐</h1><p>平行高交互蜜罐就是在防守方网络范围中<strong>单独开辟出一整套独立的网络环境</strong>并且在网络环境<strong>外部也有</strong>“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的<strong>逻辑关系而又不具备敏感性的信息</strong>。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。</p>
+<p>高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的<strong>高可获权性和隐藏于逻辑外的额外溯源功能。</strong></p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 02 2023 23:46:09 GMT+0800">2023-01-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Read more&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/01/02/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/">
+                        代码审计小提示
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="代码审计简单的小提示"><a href="#代码审计简单的小提示" class="headerlink" title="代码审计简单的小提示"></a>代码审计简单的小提示</h1><hr>
+<h2 id="1-代码审计需要的东西"><a href="#1-代码审计需要的东西" class="headerlink" title="1.代码审计需要的东西"></a>1.代码审计需要的东西</h2><h3 id="1-1-软件："><a href="#1-1-软件：" class="headerlink" title="1.1 软件："></a>1.1 软件：</h3><p>1.1.1 文本编辑器：</p>
+<p>notepad++、sublime、PHP storm</p>
+<p>1.1.2 代码运行环境：</p>
+<p>phpstudy</p>
+<p>1.1.3 辅助审计工具：</p>
+<p>kunlunM，seay</p>
+<h3 id="1-2-知识："><a href="#1-2-知识：" class="headerlink" title="1.2 知识："></a>1.2 知识：</h3><p>1.2.1 前端语言知识：</p>
+<p>html、css、js</p>
+<p>1.2.2 脚本语言知识：</p>
+<p>php、asp、jsp</p>
+<p>1.2.3 后端语言知识：</p>
+<p>python-&gt;django、flask</p>
+<p>java-&gt;vue、spring</p>
+<p>1.2.4 数据库知识：</p>
+<p>数据库语句、数据库结构、数据库使用</p>
+<p>1.2.5 网站结构知识：</p>
+<p>mvc等（如cms的基本结构）</p>
+<h2 id="2-代码审计的基本流程"><a href="#2-代码审计的基本流程" class="headerlink" title="2.代码审计的基本流程"></a>2.代码审计的基本流程</h2><p>2.1 了解目标的基本组织结构，也就是通读文件夹，知道哪些文件夹里面大概是哪些内容并且具体负责什么功能</p>
+<p>2.2 寻找主要的入口页面（如index、admin等）找到前端页面逻辑触发的入口</p>
+<p>2.3 遍历所有的功能函数并且了解基本的传参过程和内部处理逻辑</p>
+<p>2.4 搭建运行环境并且收集所有用户可以控制的变量和参数</p>
+<p>2.5 将收集到的变量和参数对照源代码带入并检查过滤机制</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 02 2023 23:46:02 GMT+0800">2023-01-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2023/01/02/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/">Read more&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/01/02/APT%E6%94%BB%E5%87%BB%E5%88%86%E5%B8%83%E5%8C%96%E7%9A%84%E6%80%9D%E8%80%83/">
+                        APT攻击分布化的思考
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近由darkside攻击事件思考了很多，尤其是RasS（勒索即服务）这种形式，也就是darkside只提供勒索服务，信息收集，打点，样本投放都由其他组织完成。其实在近几年的apt攻击中这种多组织合作的形式越来越扮演者重要的角色，也就是攻击的完整过程并不是完全由某一个apt组织完成的，攻击中的每个流程都有可能是通过不同的apt组织协同合作完成，这种形式给我们的网络安全防御带来了新的挑战和思考。</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 02 2023 23:45:54 GMT+0800">2023-01-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2023/01/02/APT%E6%94%BB%E5%87%BB%E5%88%86%E5%B8%83%E5%8C%96%E7%9A%84%E6%80%9D%E8%80%83/">Read more&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator">
+        <div class="paginator">
+    
+        <a class="prev btn"
+           href="/"
+        >Prev</a>
+    
+
+    
+</div>
+
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

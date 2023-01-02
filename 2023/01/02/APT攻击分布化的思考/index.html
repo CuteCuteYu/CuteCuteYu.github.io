@@ -1,37 +1,523 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            APT攻击分布化的思考 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">APT攻击分布化的思考</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:45:54</span>
+        <span class="mobile">2023-01-02 23:45</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近由darkside攻击事件思考了很多，尤其是RasS（勒索即服务）这种形式，也就是darkside只提供勒索服务，信息收集，打点，样本投放都由其他组织完成。其实在近几年的apt攻击中这种多组织合作的形式越来越扮演者重要的角色，也就是攻击的完整过程并不是完全由某一个apt组织完成的，攻击中的每个流程都有可能是通过不同的apt组织协同合作完成，这种形式给我们的网络安全防御带来了新的挑战和思考。</p>
+<span id="more"></span>
+
+<h1 id="APT分布式攻击的优点"><a href="#APT分布式攻击的优点" class="headerlink" title="APT分布式攻击的优点"></a>APT分布式攻击的优点</h1><h2 id="1-攻击特征多样化"><a href="#1-攻击特征多样化" class="headerlink" title="1.攻击特征多样化"></a>1.攻击特征多样化</h2><p>由于不同攻击流程都是由不同的apt组织完成的，所以攻击的痕迹或者特征有可能指向完全不同的组织。这提高了溯源和防守的时间成本，也降低了攻击的可识别度。</p>
+<h2 id="2-攻击成本降低"><a href="#2-攻击成本降低" class="headerlink" title="2.攻击成本降低"></a>2.攻击成本降低</h2><p>不同的apt组织可以根据自己的效率选择针对自己效益最高的流程来做，效率提高并且多个组织合作能快速降低攻击的技术成本和资金成本，而且攻击的持续时间由于提前专门准备，所以时间会大大缩短。比如有专门的apt组织来做信息收集，另外一个专门负责样本编写，还有专门负责样本投放的。</p>
+<h2 id="3-技术深度和针对性提高"><a href="#3-技术深度和针对性提高" class="headerlink" title="3.技术深度和针对性提高"></a>3.技术深度和针对性提高</h2><p>主页有专攻，一个apt组织其所属的人员不可能样样精通，但是多个apt组织合作就可以取长补短，对于目标的攻击能力会大大提高，而且针对目标的环境和社会属性还会选择特别的攻击手段。</p>
+<h2 id="4-攻击索取收益大大提高"><a href="#4-攻击索取收益大大提高" class="headerlink" title="4.攻击索取收益大大提高"></a>4.攻击索取收益大大提高</h2><p>由于是多组织合作方式那么就必定会提高如赎金等攻击成果，这对企业不管是社会影响还是经济影响都是巨大的。</p>
+<h1 id="企业在面对这种新形势的攻击该如何防御"><a href="#企业在面对这种新形势的攻击该如何防御" class="headerlink" title="企业在面对这种新形势的攻击该如何防御"></a>企业在面对这种新形势的攻击该如何防御</h1><h2 id="1-专注威胁分析的同时多追踪情报来源"><a href="#1-专注威胁分析的同时多追踪情报来源" class="headerlink" title="1.专注威胁分析的同时多追踪情报来源"></a>1.专注威胁分析的同时多追踪情报来源</h2><p>多个apt组织合作攻击往往攻击的面和可溯源的点都会更加复杂，所以我们应该把重心更偏向于组织间合作的线索作为我们的突破口，这在实际行动中体现为多寻找威胁情报来源处的平台中其他有用的线索比如组织间合作交流的内容等作为我们溯源和打击这类攻击的重要手段。</p>
+<h2 id="2-攻击成果的分赃作为企业追踪的主要对象"><a href="#2-攻击成果的分赃作为企业追踪的主要对象" class="headerlink" title="2.攻击成果的分赃作为企业追踪的主要对象"></a>2.攻击成果的分赃作为企业追踪的主要对象</h2><p>和单一的apt组织攻击不同的点是，多个apt攻击完成之后由于是组织与组织之间，所以会多出一个分赃成果的步骤，这一步也是我们去溯源反制的重要内容。</p>
+<h2 id="3-加强工具和样本的特征识别"><a href="#3-加强工具和样本的特征识别" class="headerlink" title="3.加强工具和样本的特征识别"></a>3.加强工具和样本的特征识别</h2><p>除了传统的特征之外多个apt组织攻击时经常会有的特征就是使用的工具或者样本往往会有二次开发的痕迹，以这个二次开发的痕迹着手能更快地理出除了当前特征对应的组织外的其他合作组织。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>RasS只是现在网络威胁发展的一角，攻击流程的多样化和分布化，攻击组织的合作趋势会是今后网络安全威胁的重要发展方向，黑灰产的产业化和工业流水线式的服务提供更是今后企业面对的传统网络威胁的重中之重。对于这种趋势，我们更要加强平台管理和组织间的合作打击，把攻击过程打击在合作上，让整个攻击流程扼杀在摇篮中。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：APT攻击分布化的思考</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:45:54</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/APT攻击分布化的思考/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B0%8F%E6%8F%90%E7%A4%BA/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">代码审计小提示</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APT%E5%88%86%E5%B8%83%E5%BC%8F%E6%94%BB%E5%87%BB%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">APT分布式攻击的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%94%BB%E5%87%BB%E7%89%B9%E5%BE%81%E5%A4%9A%E6%A0%B7%E5%8C%96"><span class="nav-text">1.攻击特征多样化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%94%BB%E5%87%BB%E6%88%90%E6%9C%AC%E9%99%8D%E4%BD%8E"><span class="nav-text">2.攻击成本降低</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8A%80%E6%9C%AF%E6%B7%B1%E5%BA%A6%E5%92%8C%E9%92%88%E5%AF%B9%E6%80%A7%E6%8F%90%E9%AB%98"><span class="nav-text">3.技术深度和针对性提高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%94%BB%E5%87%BB%E7%B4%A2%E5%8F%96%E6%94%B6%E7%9B%8A%E5%A4%A7%E5%A4%A7%E6%8F%90%E9%AB%98"><span class="nav-text">4.攻击索取收益大大提高</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%81%E4%B8%9A%E5%9C%A8%E9%9D%A2%E5%AF%B9%E8%BF%99%E7%A7%8D%E6%96%B0%E5%BD%A2%E5%8A%BF%E7%9A%84%E6%94%BB%E5%87%BB%E8%AF%A5%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1"><span class="nav-text">企业在面对这种新形势的攻击该如何防御</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%93%E6%B3%A8%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90%E7%9A%84%E5%90%8C%E6%97%B6%E5%A4%9A%E8%BF%BD%E8%B8%AA%E6%83%85%E6%8A%A5%E6%9D%A5%E6%BA%90"><span class="nav-text">1.专注威胁分析的同时多追踪情报来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%94%BB%E5%87%BB%E6%88%90%E6%9E%9C%E7%9A%84%E5%88%86%E8%B5%83%E4%BD%9C%E4%B8%BA%E4%BC%81%E4%B8%9A%E8%BF%BD%E8%B8%AA%E7%9A%84%E4%B8%BB%E8%A6%81%E5%AF%B9%E8%B1%A1"><span class="nav-text">2.攻击成果的分赃作为企业追踪的主要对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%A0%E5%BC%BA%E5%B7%A5%E5%85%B7%E5%92%8C%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB"><span class="nav-text">3.加强工具和样本的特征识别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

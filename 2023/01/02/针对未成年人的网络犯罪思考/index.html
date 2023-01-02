@@ -1,37 +1,544 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            针对未成年人的网络犯罪思考 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">针对未成年人的网络犯罪思考</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:47:18</span>
+        <span class="mobile">2023-01-02 23:47</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>央视网最近发表一篇文章为《孩子手机依赖，赖谁？》</p>
+<p>文章中指出，随着科技和经济的发展，未成年人拥有手机的比例和依赖手机的时间越来越高，虽然城市未成年人拥有手机的比例更高，但是农村未成年人依赖手机的比例却更高。当然，本文不讨论社会学相关，只讨论这种现象有可能带来的有关未成年人遭遇网络犯罪如诈骗等所带来的影响。</p>
+<span id="more"></span>
+
+<h1 id="孩子为什么会拿起手机？"><a href="#孩子为什么会拿起手机？" class="headerlink" title="孩子为什么会拿起手机？"></a>孩子为什么会拿起手机？</h1><p>原文：在手机依赖问题上，除了学校对学生手机管理不力之外，《报告》指出，子女手机依赖行为的产生受其父母手机依赖行为的影响较大。</p>
+<p>文章中指出，父母与子女之间的沟通问题是造成未成年人依赖手机的主要原因。那么这中间就会存在一个隐患就是父母对于子女的防骗或者说是网络犯罪防范教育是比较缺乏的。由于未成年人对于社会及他人的感知力较弱，社会经验不足的问题，其受骗率会比成年人更高，尤其是会轻易对陌生人付出更多的信任，这种信任通常是由于再家庭环境中家庭关系信任不足导致的。其次就是现在就连很多成年人对于网络犯罪中的技术识别能力都是比较弱的，更何况对于自己的子女教育如何识别网络犯罪以及遇到网络犯罪后如何有效保护自己的合法利益，这在一定程度上给违法犯罪分子给予了一定的操作空间和利益。</p>
+<h1 id="心理学与防范"><a href="#心理学与防范" class="headerlink" title="心理学与防范"></a>心理学与防范</h1><p>从网络犯罪者来说，一个不完善的家庭教育所带来的子女思想和对社会的观察是也是不完善的，对于尤其是网络诈骗来说是尤其容易的。比如利用家庭关系中的弱点或者父母对子女教育的缺陷作为突破口从而更加容易地获得未成年人对陌生人的信任。</p>
+<p>在遇到网络犯罪时，由于缺乏法律教育和保护教育，对于自己已经受损的利益现在的未成年人通常做的决策会更加保守，也更加不会去寻求他人的正确帮助。</p>
+<h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><h3 id="1-及时的教育和引导"><a href="#1-及时的教育和引导" class="headerlink" title="1.及时的教育和引导"></a>1.及时的教育和引导</h3><p>多寻找些针对未成年人的诈骗或者网络犯罪的案例，从案例出发教育和引导未成年人构建自己的网络犯罪安全意识。</p>
+<h3 id="2-有效率的监测和预警"><a href="#2-有效率的监测和预警" class="headerlink" title="2.有效率的监测和预警"></a>2.有效率的监测和预警</h3><p>什么叫做有效率呢？很简单，从黑白名单出发，告诉自己子女遇到什么情况的时候要及时通报父母，遇到什么事情的时候要及时报警。当子女遇到这些情况的时候要及时地介入并在确认自己的合法利益被侵犯时要及时寻找警方帮助。</p>
+<h3 id="3-积极地维护合法权益"><a href="#3-积极地维护合法权益" class="headerlink" title="3.积极地维护合法权益"></a>3.积极地维护合法权益</h3><p>当遇到针对未成年人的网络犯罪行为的时候，要主动积极地联系警方打击这类违法犯罪行为。这样既有效地保护了自己地合法权益也让网络犯罪的违法分子没有可乘之机和侥幸心理。</p>
+<h1 id="技术与防范"><a href="#技术与防范" class="headerlink" title="技术与防范"></a>技术与防范</h1><p>随着利用互联网的普及和网络犯罪技术的发展，手机等移动设备已经成为网络犯罪的重灾区，很多传统的网络犯罪技术也越来越向移动互联网设备转移。其中很多技术具有很高的迷惑性，让人难以分别也更容易陷入其中。</p>
+<h2 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h2><h3 id="1-给自己和子女设好一个安全基线"><a href="#1-给自己和子女设好一个安全基线" class="headerlink" title="1.给自己和子女设好一个安全基线"></a>1.给自己和子女设好一个安全基线</h3><p>也就是在任何时候都要做好的网络安全保护意识，比如不要轻易链接公共场合的wifi，在打开网页时需要确认是否合规合法，在接受到熟人信息时要做再确认，不要轻易接受陌生人发送的文件等。</p>
+<h3 id="2-尽力做好最新网络犯罪技术的了解"><a href="#2-尽力做好最新网络犯罪技术的了解" class="headerlink" title="2.尽力做好最新网络犯罪技术的了解"></a>2.尽力做好最新网络犯罪技术的了解</h3><p>这一点没法做到最好，只能说多抽点时间多了解最新的技术发展和网络犯罪技术的利用和案例，不断地提高自己地安全意识。万一以后遇到一个网络犯罪场景是自己之前了解过的那么处理和应对起来就会比较有效和轻松。</p>
+<h3 id="3-一切以自己的合法权益为主"><a href="#3-一切以自己的合法权益为主" class="headerlink" title="3.一切以自己的合法权益为主"></a>3.一切以自己的合法权益为主</h3><p>不管犯罪分子使用什么样的网络犯罪手段，一定要清醒地认识到自己的权益是否受到了侵犯，只有做好这个“红线”，这样才能在面对日新月异的网络犯罪中清楚地识别出来。</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>原文：当“教育内卷”“鸡娃”成为时代焦虑，或许家长们更应该冷静下来。正如全国政协委员、江苏省锡山高级中学校长唐江澎在今年两会上所言：“好的教育，应该是培养终生运动者，责任担当者，问题解决者和优雅生活者，给孩子们健全而优秀的人格赢得未来的幸福，造福国家社会。”</p>
+<p>中国的年轻人的未来，基础就是平安幸福的生活。抵制和防范网络犯罪行为应该被纳入重点的教育内容之中，不管是家庭还是学校，都要普及好网络安全教育，这样孩子在使用手机等移动互联网设备的时候我们才能更加地安心。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：针对未成年人的网络犯罪思考</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:47:18</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/针对未成年人的网络犯罪思考/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%BD%AA%EF%BC%9A%E5%88%A9%E6%B6%A6%E7%A7%81%E6%9C%89%E5%8C%96%EF%BC%8C%E4%BA%8F%E6%8D%9F%E7%A4%BE%E4%BC%9A%E5%8C%96/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">转载文章-网络安全的经济学原罪：利润私有化，亏损社会化</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E8%AF%AD%E8%A8%80%E4%BA%A4%E6%B5%81%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E8%BE%93%E5%85%A5/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">语言交流中的驱动输入</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%8B%BF%E8%B5%B7%E6%89%8B%E6%9C%BA%EF%BC%9F"><span class="nav-text">孩子为什么会拿起手机？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E7%90%86%E5%AD%A6%E4%B8%8E%E9%98%B2%E8%8C%83"><span class="nav-text">心理学与防范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E8%8C%83"><span class="nav-text">防范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8F%8A%E6%97%B6%E7%9A%84%E6%95%99%E8%82%B2%E5%92%8C%E5%BC%95%E5%AF%BC"><span class="nav-text">1.及时的教育和引导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E7%9B%91%E6%B5%8B%E5%92%8C%E9%A2%84%E8%AD%A6"><span class="nav-text">2.有效率的监测和预警</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%A7%AF%E6%9E%81%E5%9C%B0%E7%BB%B4%E6%8A%A4%E5%90%88%E6%B3%95%E6%9D%83%E7%9B%8A"><span class="nav-text">3.积极地维护合法权益</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%B8%8E%E9%98%B2%E8%8C%83"><span class="nav-text">技术与防范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E8%8C%83-1"><span class="nav-text">防范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BB%99%E8%87%AA%E5%B7%B1%E5%92%8C%E5%AD%90%E5%A5%B3%E8%AE%BE%E5%A5%BD%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E5%9F%BA%E7%BA%BF"><span class="nav-text">1.给自己和子女设好一个安全基线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B0%BD%E5%8A%9B%E5%81%9A%E5%A5%BD%E6%9C%80%E6%96%B0%E7%BD%91%E7%BB%9C%E7%8A%AF%E7%BD%AA%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="nav-text">2.尽力做好最新网络犯罪技术的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%80%E5%88%87%E4%BB%A5%E8%87%AA%E5%B7%B1%E7%9A%84%E5%90%88%E6%B3%95%E6%9D%83%E7%9B%8A%E4%B8%BA%E4%B8%BB"><span class="nav-text">3.一切以自己的合法权益为主</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E5%B0%BE"><span class="nav-text">结尾</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,37 +1,544 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="小玉玉的博客">
+    <meta name="author" content="萌萌哒的小玉玉">
+    
+    <title>
+        
+            溯源的基本思路 |
+        
+        小玉玉的博客
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"cutecuteyu.github.io","root":"/","language":"zh-Hans"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"小玉玉的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.6","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-{% block page_class %}page-post-detail{% endblock %}
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
 
-{% block content %}
+<main class="page-container">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                小玉玉的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-{% endblock %}
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <div class="window-mask"></div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">溯源的基本思路</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">萌萌哒的小玉玉</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-02 23:46:51</span>
+        <span class="mobile">2023-01-02 23:46</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="溯源的基本思路"><a href="#溯源的基本思路" class="headerlink" title="溯源的基本思路"></a>溯源的基本思路</h1><p>这只是基本的溯源思路和思考方式。</p>
+<h2 id="1-溯源目的"><a href="#1-溯源目的" class="headerlink" title="1.溯源目的"></a>1.溯源目的</h2><h3 id="1-1-你想要溯源到什么东西"><a href="#1-1-你想要溯源到什么东西" class="headerlink" title="1.1 你想要溯源到什么东西"></a>1.1 你想要溯源到什么东西</h3><p>要有明确的溯源目标</p>
+<h3 id="1-2-当前条件下能用什么东西来溯源"><a href="#1-2-当前条件下能用什么东西来溯源" class="headerlink" title="1.2 当前条件下能用什么东西来溯源"></a>1.2 当前条件下能用什么东西来溯源</h3><p>身边可以利用的工具或者方法</p>
+<h2 id="2-溯源的结论"><a href="#2-溯源的结论" class="headerlink" title="2.溯源的结论"></a>2.溯源的结论</h2><h3 id="2-1-任何再完美的溯源都是有可能失败的，攻防本身就是技术储备的对抗。"><a href="#2-1-任何再完美的溯源都是有可能失败的，攻防本身就是技术储备的对抗。" class="headerlink" title="2.1 任何再完美的溯源都是有可能失败的，攻防本身就是技术储备的对抗。"></a>2.1 任何再完美的溯源都是有可能失败的，攻防本身就是技术储备的对抗。</h3><h3 id="2-2-社会工程学，yyds！"><a href="#2-2-社会工程学，yyds！" class="headerlink" title="2.2 社会工程学，yyds！"></a>2.2 社会工程学，yyds！</h3><span id="more"></span>
+
+<h2 id="3-溯源的途径"><a href="#3-溯源的途径" class="headerlink" title="3.溯源的途径"></a>3.溯源的途径</h2><h3 id="3-1-电子设备"><a href="#3-1-电子设备" class="headerlink" title="3.1 电子设备"></a>3.1 电子设备</h3><p>移动设备（手机等）和移不动设备（计算机等）</p>
+<h3 id="3-2-非电子设备"><a href="#3-2-非电子设备" class="headerlink" title="3.2 非电子设备"></a>3.2 非电子设备</h3><p>快递，书信，线下battle等</p>
+<h2 id="4-溯源的思考方式"><a href="#4-溯源的思考方式" class="headerlink" title="4.溯源的思考方式"></a>4.溯源的思考方式</h2><p>攻击者的攻击方式大部分都是攻击计算机（买通防守方除外），所以最初接触到攻击者都是在网络上，那么就需要思考网络上存在的东西哪些是可以利用的：</p>
+<h3 id="4-1-技术手段"><a href="#4-1-技术手段" class="headerlink" title="4.1 技术手段"></a>4.1 技术手段</h3><h4 id="4-1-1-ip（不可能是真的）："><a href="#4-1-1-ip（不可能是真的）：" class="headerlink" title="4.1.1 ip（不可能是真的）："></a>4.1.1 ip（不可能是真的）：</h4><p>节点的提供商-》有没有可能联系到客服-》客服有没有可能套出购买者信息；节点有没有可能进入或者找到方法去找到控制端</p>
+<h4 id="4-1-2-域名（不可能查得到的）："><a href="#4-1-2-域名（不可能查得到的）：" class="headerlink" title="4.1.2 域名（不可能查得到的）："></a>4.1.2 域名（不可能查得到的）：</h4><p>域名的提供商-》有没有可能拿到信息</p>
+<h4 id="4-1-3-攻击者的技术手段："><a href="#4-1-3-攻击者的技术手段：" class="headerlink" title="4.1.3 攻击者的技术手段："></a>4.1.3 攻击者的技术手段：</h4><p>可以基本判断攻击者的技术水平和知识储备</p>
+<h4 id="4-1-4-攻击时间（很多都是脚本自动跑）："><a href="#4-1-4-攻击时间（很多都是脚本自动跑）：" class="headerlink" title="4.1.4 攻击时间（很多都是脚本自动跑）："></a>4.1.4 攻击时间（很多都是脚本自动跑）：</h4><p>判断攻击者的常见时间</p>
+<p>以上就是能够通过技术手段收集到的内容，接下来我们就需要使用非技术手段了。</p>
+<h3 id="4-2-非技术手段"><a href="#4-2-非技术手段" class="headerlink" title="4.2 非技术手段"></a>4.2 非技术手段</h3><h4 id="4-2-1-攻击者可能感兴趣的信息进行诱导"><a href="#4-2-1-攻击者可能感兴趣的信息进行诱导" class="headerlink" title="4.2.1 攻击者可能感兴趣的信息进行诱导"></a>4.2.1 攻击者可能感兴趣的信息进行诱导</h4><p>比如存放一些网站地址或者ip信息或者密码信息，但是这些信息都是指向蜜罐的</p>
+<h4 id="4-2-2-根据自身业务内容逻辑存放攻击者感兴趣的东西"><a href="#4-2-2-根据自身业务内容逻辑存放攻击者感兴趣的东西" class="headerlink" title="4.2.2 根据自身业务内容逻辑存放攻击者感兴趣的东西"></a>4.2.2 根据自身业务内容逻辑存放攻击者感兴趣的东西</h4><p>比如带宏的excel文档名字叫《公司财务规划总结》等</p>
+<p>比如带恶意dll的oa客户端名字叫《XX公司内部通达OA系统安装包》等</p>
+<h4 id="4-2-3-放一些可能会泄露在公开网络上的有趣的东西然后反向搜索信息最开始的发布点"><a href="#4-2-3-放一些可能会泄露在公开网络上的有趣的东西然后反向搜索信息最开始的发布点" class="headerlink" title="4.2.3 放一些可能会泄露在公开网络上的有趣的东西然后反向搜索信息最开始的发布点"></a>4.2.3 放一些可能会泄露在公开网络上的有趣的东西然后反向搜索信息最开始的发布点</h4><p>比如在公司网络中的蜜罐里放上：“我是韩毅，红队没吃饭么”，然后反向搜索网上哪里是：“就tm你叫韩毅啊”的信息出处。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：溯源的基本思路</li>
+        <li>Post author：萌萌哒的小玉玉</li>
+        <li>Create time：2023-01-02 23:46:51</li>
+        <li>
+            Post link：https://cutecuteyu.github.io/2023/01/02/溯源的基本思路/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/02/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E5%9C%A8%E6%88%98%E4%BA%89%E6%88%98%E7%95%A5%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">网络空间安全在战争战略中的思考</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/02/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%B8%AD%E9%98%9F%E7%9B%AE%E6%A0%87%E7%9A%84%E9%87%8F%E5%8C%96%E6%80%9D%E8%80%83/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">社会工程学中队目标的量化思考</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%AF%E6%BA%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-text">溯源的基本思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%BA%AF%E6%BA%90%E7%9B%AE%E7%9A%84"><span class="nav-text">1.溯源目的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BD%A0%E6%83%B3%E8%A6%81%E6%BA%AF%E6%BA%90%E5%88%B0%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF"><span class="nav-text">1.1 你想要溯源到什么东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%BD%93%E5%89%8D%E6%9D%A1%E4%BB%B6%E4%B8%8B%E8%83%BD%E7%94%A8%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF%E6%9D%A5%E6%BA%AF%E6%BA%90"><span class="nav-text">1.2 当前条件下能用什么东西来溯源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%BA%AF%E6%BA%90%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="nav-text">2.溯源的结论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%BB%E4%BD%95%E5%86%8D%E5%AE%8C%E7%BE%8E%E7%9A%84%E6%BA%AF%E6%BA%90%E9%83%BD%E6%98%AF%E6%9C%89%E5%8F%AF%E8%83%BD%E5%A4%B1%E8%B4%A5%E7%9A%84%EF%BC%8C%E6%94%BB%E9%98%B2%E6%9C%AC%E8%BA%AB%E5%B0%B1%E6%98%AF%E6%8A%80%E6%9C%AF%E5%82%A8%E5%A4%87%E7%9A%84%E5%AF%B9%E6%8A%97%E3%80%82"><span class="nav-text">2.1 任何再完美的溯源都是有可能失败的，攻防本身就是技术储备的对抗。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%EF%BC%8Cyyds%EF%BC%81"><span class="nav-text">2.2 社会工程学，yyds！</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%BA%AF%E6%BA%90%E7%9A%84%E9%80%94%E5%BE%84"><span class="nav-text">3.溯源的途径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87"><span class="nav-text">3.1 电子设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%9D%9E%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87"><span class="nav-text">3.2 非电子设备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%BA%AF%E6%BA%90%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F"><span class="nav-text">4.溯源的思考方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5"><span class="nav-text">4.1 技术手段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-ip%EF%BC%88%E4%B8%8D%E5%8F%AF%E8%83%BD%E6%98%AF%E7%9C%9F%E7%9A%84%EF%BC%89%EF%BC%9A"><span class="nav-text">4.1.1 ip（不可能是真的）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-%E5%9F%9F%E5%90%8D%EF%BC%88%E4%B8%8D%E5%8F%AF%E8%83%BD%E6%9F%A5%E5%BE%97%E5%88%B0%E7%9A%84%EF%BC%89%EF%BC%9A"><span class="nav-text">4.1.2 域名（不可能查得到的）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5%EF%BC%9A"><span class="nav-text">4.1.3 攻击者的技术手段：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-%E6%94%BB%E5%87%BB%E6%97%B6%E9%97%B4%EF%BC%88%E5%BE%88%E5%A4%9A%E9%83%BD%E6%98%AF%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E8%B7%91%EF%BC%89%EF%BC%9A"><span class="nav-text">4.1.4 攻击时间（很多都是脚本自动跑）：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%9D%9E%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5"><span class="nav-text">4.2 非技术手段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-%E6%94%BB%E5%87%BB%E8%80%85%E5%8F%AF%E8%83%BD%E6%84%9F%E5%85%B4%E8%B6%A3%E7%9A%84%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E8%AF%B1%E5%AF%BC"><span class="nav-text">4.2.1 攻击者可能感兴趣的信息进行诱导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-%E6%A0%B9%E6%8D%AE%E8%87%AA%E8%BA%AB%E4%B8%9A%E5%8A%A1%E5%86%85%E5%AE%B9%E9%80%BB%E8%BE%91%E5%AD%98%E6%94%BE%E6%94%BB%E5%87%BB%E8%80%85%E6%84%9F%E5%85%B4%E8%B6%A3%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-text">4.2.2 根据自身业务内容逻辑存放攻击者感兴趣的东西</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-%E6%94%BE%E4%B8%80%E4%BA%9B%E5%8F%AF%E8%83%BD%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%9C%A8%E5%85%AC%E5%BC%80%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%9C%E8%A5%BF%E7%84%B6%E5%90%8E%E5%8F%8D%E5%90%91%E6%90%9C%E7%B4%A2%E4%BF%A1%E6%81%AF%E6%9C%80%E5%BC%80%E5%A7%8B%E7%9A%84%E5%8F%91%E5%B8%83%E7%82%B9"><span class="nav-text">4.2.3 放一些可能会泄露在公开网络上的有趣的东西然后反向搜索信息最开始的发布点</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">萌萌哒的小玉玉. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.6</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/8/17 11:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
