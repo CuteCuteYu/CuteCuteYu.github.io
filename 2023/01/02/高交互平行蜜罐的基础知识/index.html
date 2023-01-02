@@ -7,15 +7,15 @@
   
   <title>高交互平行蜜罐的基础知识 | 小玉玉的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。 平行高交互式蜜罐的基本结构我们以">
+  <meta name="description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高交互平行蜜罐的基础知识">
 <meta property="og:url" content="https://cutecuteyu.github.io/2023/01/02/%E9%AB%98%E4%BA%A4%E4%BA%92%E5%B9%B3%E8%A1%8C%E8%9C%9C%E7%BD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="小玉玉的博客">
-<meta property="og:description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。 平行高交互式蜜罐的基本结构我们以">
+<meta property="og:description" content="什么是平行高交互蜜罐平行高交互蜜罐就是在防守方网络范围中单独开辟出一整套独立的网络环境并且在网络环境外部也有“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的逻辑关系而又不具备敏感性的信息。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。 高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的高可获权性和隐藏于逻辑外的额外溯源功能。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-01-02T15:46:09.000Z">
-<meta property="article:modified_time" content="2023-01-02T15:48:47.680Z">
+<meta property="article:modified_time" content="2023-01-02T15:56:56.066Z">
 <meta property="article:author" content="萌萌哒的小玉玉">
 <meta name="twitter:card" content="summary">
   
@@ -90,6 +90,8 @@
       
         <h1 id="什么是平行高交互蜜罐"><a href="#什么是平行高交互蜜罐" class="headerlink" title="什么是平行高交互蜜罐"></a>什么是平行高交互蜜罐</h1><p>平行高交互蜜罐就是在防守方网络范围中<strong>单独开辟出一整套独立的网络环境</strong>并且在网络环境<strong>外部也有</strong>“客户端”概念上的蜜罐与之交互，并且产生的数据能和真实业务产生一定的<strong>逻辑关系而又不具备敏感性的信息</strong>。蜜罐本身所具有的内容也是和真实业务所平行的内容迭代。</p>
 <p>高交互中除了具有传统模拟业务的功能之外，还应该有基于业务逻辑内的<strong>高可获权性和隐藏于逻辑外的额外溯源功能。</strong></p>
+<span id="more"></span>
+
 <h2 id="平行高交互式蜜罐的基本结构"><a href="#平行高交互式蜜罐的基本结构" class="headerlink" title="平行高交互式蜜罐的基本结构"></a>平行高交互式蜜罐的基本结构</h2><p>我们以传统概念上的网络可信任范围划分：</p>
 <h3 id="范围内："><a href="#范围内：" class="headerlink" title="范围内："></a>范围内：</h3><h4 id="服务端的蜜罐"><a href="#服务端的蜜罐" class="headerlink" title="服务端的蜜罐"></a>服务端的蜜罐</h4><p>具有平行模拟真实业务的服务端</p>
 <h4 id="独立的服务端数据存储"><a href="#独立的服务端数据存储" class="headerlink" title="独立的服务端数据存储"></a>独立的服务端数据存储</h4><p>用于存储产生的模拟交互和攻击者交互数据</p>
